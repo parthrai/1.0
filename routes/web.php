@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 Route::get('/setup', function () {
-    return view('install');
+    return view('Install');
 });
 
 Route::get('/hello', function () {

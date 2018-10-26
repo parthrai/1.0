@@ -16,8 +16,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('/install', function () {
+Route::get('/setup', function () {
     return view('install');
+});
+
+Route::get('/hello', function () {
+    return "hello";
 });
 
 Auth::routes();

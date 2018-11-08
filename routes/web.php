@@ -16,13 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/setup', function () {
-    return view('Install');
-});
 
-Route::get('/hello', function () {
-    return "hello";
-});
+Route::get('/setup','SetupController@index');
+
+
 
 Auth::routes();
 

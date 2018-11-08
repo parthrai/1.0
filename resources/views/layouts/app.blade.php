@@ -29,7 +29,7 @@
         gtag('config', 'UA-128348802-1');
     </script>
 
-    
+
 </head>
 <body>
     <div id="app">

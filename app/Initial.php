@@ -12,9 +12,9 @@ class Initial extends Model
         $data = Initial::find(1);
 
         if(!$data->isSetup)
-            return view('Install');
+            return "Install";
         else
-            return "hello";
+            return "home";
 
     }
 }

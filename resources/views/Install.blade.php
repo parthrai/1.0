@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                       This is Setup page
+                       <setup-component></setup-component>
                     </div>
                 </div>
             </div>

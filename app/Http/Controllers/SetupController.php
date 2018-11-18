@@ -18,8 +18,10 @@ class SetupController extends Controller
 
     public function index(){
 
-        Initial::isSetup();
 
-        return view('Install');
+            $view = Initial::isSetup();
+
+
+        return view($view);
     }
 }

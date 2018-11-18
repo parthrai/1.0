@@ -14015,7 +14015,7 @@ window.Vue = __webpack_require__(37);
  */
 
 Vue.component('example-component', __webpack_require__(40));
-Vue.component('setup-component', __webpack_require__(43));
+Vue.component('setup-component', __webpack_require__(50));
 
 var app = new Vue({
   el: '#app'
@@ -47412,7 +47412,19 @@ if (false) {
 }
 
 /***/ }),
-/* 43 */
+/* 43 */,
+/* 44 */,
+/* 45 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -47420,7 +47432,7 @@ var normalizeComponent = __webpack_require__(11)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(44)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47437,7 +47449,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/Initials/Setup/setup.vue"
+Component.options.__file = "resources/js/components/Initials/setup/setup.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47446,9 +47458,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4bf6b356", Component.options)
+    hotAPI.createRecord("data-v-f1380914", Component.options)
   } else {
-    hotAPI.reload("data-v-4bf6b356", Component.options)
+    hotAPI.reload("data-v-f1380914", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47459,7 +47471,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47507,15 +47519,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4bf6b356", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f1380914", module.exports)
   }
 }
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

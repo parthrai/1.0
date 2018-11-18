@@ -13,8 +13,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <setup-loader-component></setup-loader-component>
 
-                       <setup-component></setup-component>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,13 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+// Initial Setup
+
+
+Vue.component('setup-loader-component', require('./components/Initials/loader.vue'));
 Vue.component('setup-component', require('./components/Initials/setup/setup.vue'));
+Vue.component('addUsers-component', require('./components/Initials/users/addUsers.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -1,6 +1,7 @@
 <template>
-    <div>
 
+    <div>
+        <h1>Admin User</h1>
 
         <form action="/action_page.php">
             <div class="form-group">
@@ -14,5 +15,8 @@
 
             <button type="submit" class="btn btn-primary">Next</button>
         </form>
+
+
     </div>
+
 </template>

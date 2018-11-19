@@ -54,7 +54,7 @@
 
                 console.log(info)
 
-                axios.post('http://cms2.test/updateCompanyName',info)
+                axios.post('/updateCompanyName',info)
                     .then(response => {
                         console.log(response);
                     });

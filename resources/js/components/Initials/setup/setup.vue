@@ -2,7 +2,7 @@
     <div>
 
 
-        <form action="/action_page.php">
+        <form>
             <div class="form-group">
                 <label for="c_name">Company name</label>
                 <input type="text" class="form-control" id="c_name" placeholder="Company Name">
@@ -12,7 +12,27 @@
                 <input type="text" class="form-control" id="l_key" placeholder="License Key">
             </div>
 
-            <button type="submit" class="btn btn-primary">Next</button>
+
         </form>
+
+        <button  class="btn btn-primary" v-on:click="next()">Next</button>
     </div>
 </template>
+
+<script>
+    import {store} from '../../../store/index'
+    export default{
+
+
+
+        methods:{
+
+            next(){
+
+              store.commit("increment","UserComponent")
+            }
+
+        }
+
+    }
+</script>

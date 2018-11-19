@@ -1,13 +1,15 @@
-<template>
+c<template>
 
     <div>
 
         <transition name="fade" mode="out-in">
-            <component v-bind:is="component"> </component>
+            <keep-alive>
+                <component v-bind:is="component"> </component>
+            </keep-alive>
         </transition>
 
-        <button v-on:click="component='SetupComponent'">Back</button>
-        <button v-on:click="component='UserComponent'">Next</button>
+
+
     </div>
 
 
@@ -22,10 +24,22 @@
             'SetupComponent':SetupComponent,
             'UserComponent' : UserComponent,
         },
-        data(){
-            return {
-                component : 'SetupComponent'
+
+        computed:{
+            component:{
+                get(){
+                    return this.$store.getters.getComponent;
+                }
+
+
             }
+
+        },
+
+        methods:{
+
+
+
         },
 
         mounted() {

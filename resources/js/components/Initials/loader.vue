@@ -8,7 +8,7 @@ c<template>
             </keep-alive>
         </transition>
 
-
+        <button class="btn btn-success" v-on:click="check()">check</button>
 
     </div>
 
@@ -26,8 +26,14 @@ c<template>
         },
 
         computed:{
+
+
+
             component:{
                 get(){
+
+                    console.log("hello yo yo ");
+                   // this.updateCompanyName();
                     return this.$store.getters.getComponent;
                 }
 
@@ -37,6 +43,11 @@ c<template>
         },
 
         methods:{
+
+                check(){
+                    console.log("hello");
+                    console.log(this.$store.getters.getSetupInfo);
+                },
 
 
 

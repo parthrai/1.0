@@ -7,8 +7,9 @@ export const store = new Vuex.Store({
     state:{
         name:'Parth',
 
-        component: 'SetupComponent'
+        component: 'SetupComponent',
 
+      
 
     },
 
@@ -17,22 +18,27 @@ export const store = new Vuex.Store({
 
         increment (state, n) {
             state.component = n
-        }
+        },
+
+        setupInfo(state,n){
+           state.setup = n
+        },
+
 
     },
+
+
 
     actions:{},
 
     getters:{
 
-        getName(state){
-
-
-            return state.name
-        },
-
         getComponent(state){
             return state.component
+        },
+
+        getSetupInfo(state){
+            return state.setup
         },
 
     },

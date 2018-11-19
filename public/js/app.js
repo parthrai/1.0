@@ -47989,15 +47989,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+
         component: {
             get: function get() {
+
+                console.log("hello yo yo ");
+                // this.updateCompanyName();
                 return this.$store.getters.getComponent;
             }
         }
 
     },
 
-    methods: {},
+    methods: {
+        check: function check() {
+            console.log("hello");
+            console.log(this.$store.getters.getSetupInfo);
+        }
+    },
 
     mounted: function mounted() {
         console.log('Component mounted.');
@@ -48013,7 +48022,59 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "c_name" } }, [_vm._v("Company name")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.companyName,
+              expression: "companyName"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", id: "c_name", placeholder: "Company Name" },
+          domProps: { value: _vm.companyName },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.companyName = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "l_key" } }, [_vm._v("License Key:")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.licenseKey,
+              expression: "licenseKey"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", id: "l_key", placeholder: "License Key" },
+          domProps: { value: _vm.licenseKey },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.licenseKey = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "button",
@@ -48029,32 +48090,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "c_name" } }, [_vm._v("Company name")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "c_name", placeholder: "Company Name" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "l_key" } }, [_vm._v("License Key:")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "l_key", placeholder: "License Key" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -48144,6 +48180,19 @@ var render = function() {
         { attrs: { name: "fade", mode: "out-in" } },
         [_c("keep-alive", [_c(_vm.component, { tag: "component" })], 1)],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success",
+          on: {
+            click: function($event) {
+              _vm.check()
+            }
+          }
+        },
+        [_vm._v("check")]
       )
     ],
     1
@@ -48193,18 +48242,20 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     mutations: {
         increment: function increment(state, n) {
             state.component = n;
+        },
+        setupInfo: function setupInfo(state, n) {
+            state.setup = n;
         }
     },
 
     actions: {},
 
     getters: {
-        getName: function getName(state) {
-
-            return state.name;
-        },
         getComponent: function getComponent(state) {
             return state.component;
+        },
+        getSetupInfo: function getSetupInfo(state) {
+            return state.setup;
         }
     }
 
@@ -49186,11 +49237,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+
+        return {
+            companyName: '',
+            licenseKey: ''
+        };
+    },
+
 
     methods: {
         next: function next() {
-
+            console.log(this.companyName);
+            this.updateCompanyName();
             __WEBPACK_IMPORTED_MODULE_0__store_index__["a" /* store */].commit("increment", "UserComponent");
+        },
+        updateCompanyName: function updateCompanyName() {
+
+            var info = {
+                companyName: this.companyName,
+                licenseKey: this.licenseKey
+            };
+
+            console.log(info);
+
+            axios.post('http://cms2.test/updateCompanyName', info).then(function (response) {
+                console.log(response);
+            });
         }
     }
 

@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="email address" v-model="data.email">
+                    <input type="email" class="form-control" id="email" placeholder="email address" v-model="data.email">
                 </div>
 
                 <div class="form-group">
@@ -82,7 +82,7 @@
         methods:{
 
             add(){
-                console.log("clicked");
+
                 if(this.validate()) {
                     this.addUsers();
                   //  store.commit("increment", "UserComponent")
@@ -123,7 +123,7 @@
                         console.log(response);
                     });
 
-                console.log("success");
+
             },
 
             randomPassword(){

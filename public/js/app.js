@@ -49316,7 +49316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         add: function add() {
-            console.log("clicked");
+
             if (this.validate()) {
                 this.addUsers();
                 //  store.commit("increment", "UserComponent")
@@ -49345,8 +49345,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/addAdminUser', this.data).then(function (response) {
                 console.log(response);
             });
-
-            console.log("success");
         },
         randomPassword: function randomPassword() {
             var randomstring = Math.random().toString(36).slice(-8);
@@ -49426,7 +49424,7 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    type: "text",
+                    type: "email",
                     id: "email",
                     placeholder: "email address"
                   },

@@ -8,7 +8,7 @@ c<template>
             </keep-alive>
         </transition>
 
-        <button class="btn btn-success" v-on:click="check()">check</button>
+
 
     </div>
 

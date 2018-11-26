@@ -10,6 +10,15 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import {store} from './store/index'
+import VueRouter from 'vue-router'
+import routes from './routes'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+    routes
+});
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +37,6 @@ Vue.component('addUsers-component', require('./components/Initials/users/addUser
 
 const app = new Vue({
     el: '#app',
+    router,
     store
 });

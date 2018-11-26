@@ -71,11 +71,10 @@
 </head>
 
 <body class="">
+
+<div id="app">
 <!-- Extra details for Live View on GitHub Pages -->
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
+
 <!-- End Google Tag Manager (noscript) -->
 <div class="wrapper ">
     <div class="sidebar" data-color="rose" data-background-color="black" data-image="material-assets/img/sidebar-1.jpg">
@@ -130,7 +129,9 @@
             </div>
             <ul class="nav">
                 <li class="nav-item active ">
-                    <a class="nav-link" href="../examples/dashboard.html">
+
+
+                    <a class="nav-link" href="/home">
                         <i class="material-icons">dashboard</i>
                         <p> Dashboard </p>
                     </a>
@@ -395,7 +396,7 @@
                             <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
                         </button>
                     </div>
-                    <a class="navbar-brand" href="#pablo">Dashboard</a>
+                    <a class="navbar-brand" href="/home#/">Dashboard</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -825,9 +826,6 @@
 <!-- Sharrre libray -->
 <script src="material-assets/demo/jquery.sharrre.js"></script>
 
-<noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
-</noscript>
 <script>
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
@@ -837,6 +835,8 @@
 
     });
 </script>
+
+</div>
 </body>
 
 </html>

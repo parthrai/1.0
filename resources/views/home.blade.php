@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                   <router-view></router-view>
+                       <index-loader></index-loader>
+
+
                 </div>
             </div>
         </div>

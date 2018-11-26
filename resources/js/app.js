@@ -26,6 +26,9 @@ const router = new VueRouter({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+Vue.component('index-loader', require('./components/Index-loader.vue'));
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 // Initial Setup

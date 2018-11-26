@@ -17,4 +17,19 @@ class Initial extends Model
             return "home";
 
     }
+
+    public static function companyInitials(){
+
+        $data= Initial::find(1);
+
+        $words = explode(" ", $data->company_name);
+        $acronym = "";
+
+        foreach ($words as $w) {
+            $acronym .= $w[0];
+        }
+
+        return $acronym;
+
+    }
 }

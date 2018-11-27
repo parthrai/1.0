@@ -15,8 +15,8 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th>Avatar</th>
-                        <th>Name</th>
-                        <th>email</th>
+                        <th @click="sort('name')">Name</th>
+                        <th @click="sort('email')">email</th>
 
                         <th class="text-right">Actions</th>
                     </tr>
@@ -62,7 +62,13 @@
         data(){
 
             return{
-                users:''
+                users:[],
+                currentSort:'name',
+                currentSortDir:'asc',
+                search: '',
+                searchSelection: '',
+                pageSize: 5,
+                currentPage: 1
 
             }
         },
@@ -71,6 +77,21 @@
             this.fetchUsers();
         },
         methods:{
+            sort:function(s) {
+
+                console.log("here")
+
+                if(s === this.currentSort) {
+                    this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+                }
+                this.currentSort = s;
+            },
+            nextPage:function() {
+                if((this.currentPage*this.pageSize) < this.users.length) this.currentPage++;
+            },
+            prevPage:function() {
+                if(this.currentPage > 1) this.currentPage--;
+            },
 
             fetchUsers(){
                 axios.get('/api/users').then(response => {

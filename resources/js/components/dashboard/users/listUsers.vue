@@ -36,12 +36,10 @@
 
 
                         <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info">
-                                <i class="material-icons">person</i>
-                            </button>
                             <button type="button" rel="tooltip" class="btn btn-success">
-                                <i class="material-icons">edit</i>
+                                <i class="material-icons">remove_red_eye</i>
                             </button>
+
                             <button type="button" rel="tooltip" class="btn btn-danger">
                                 <i class="material-icons">close</i>
                             </button>
@@ -50,8 +48,8 @@
 
                     </tbody>
                 </table>
-                <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="fas fa-arrow-right"></i></button>
+                <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="material-icons">navigate_before</i> Previous</button>
+                <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="material-icons">navigate_next</i></button>
             </div>
         </div>
     </div>

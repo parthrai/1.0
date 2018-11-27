@@ -51664,8 +51664,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -51862,7 +51860,9 @@ var render = function() {
                   on: { click: _vm.prevPage }
                 },
                 [
-                  _c("i", { staticClass: "fas fa-arrow-left" }),
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("navigate_before")
+                  ]),
                   _vm._v(" Previous")
                 ]
               ),
@@ -51875,7 +51875,9 @@ var render = function() {
                 },
                 [
                   _vm._v("Next "),
-                  _c("i", { staticClass: "fas fa-arrow-right" })
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("navigate_next")
+                  ])
                 ]
               )
             ])
@@ -51923,19 +51925,10 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-info",
-          attrs: { type: "button", rel: "tooltip" }
-        },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("person")])]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
           staticClass: "btn btn-success",
           attrs: { type: "button", rel: "tooltip" }
         },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("edit")])]
+        [_c("i", { staticClass: "material-icons" }, [_vm._v("remove_red_eye")])]
       ),
       _vm._v(" "),
       _c(

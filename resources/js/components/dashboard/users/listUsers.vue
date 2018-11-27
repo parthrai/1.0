@@ -6,7 +6,7 @@
             <div class="card-icon">
                 <i class="material-icons">account_box</i>
             </div>
-            <h4 class="card-title">Users</h4>
+            <h4 class="card-title">Users ({{this.users.length}})</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -17,7 +17,7 @@
                         <th>Avatar</th>
                         <th>Name</th>
                         <th>email</th>
-                      
+
                         <th class="text-right">Actions</th>
                     </tr>
                     </thead>
@@ -74,7 +74,7 @@
 
             fetchUsers(){
                 axios.get('/api/users').then(response => {
-                    console.log(response.data);
+                    console.log(response.data.length);
                     this.users=response.data
                 });
 

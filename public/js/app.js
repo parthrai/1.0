@@ -51607,7 +51607,17 @@ var render = function() {
   return this.users != 0
     ? _c("div", [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c(
+            "div",
+            { staticClass: "card-header card-header-rose card-header-icon" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Users (" + _vm._s(this.users.length) + ")")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "table-responsive" }, [
@@ -51652,17 +51662,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header card-header-rose card-header-icon" },
-      [
-        _c("div", { staticClass: "card-icon" }, [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("account_box")])
-        ]),
-        _vm._v(" "),
-        _c("h4", { staticClass: "card-title" }, [_vm._v("Users")])
-      ]
-    )
+    return _c("div", { staticClass: "card-icon" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("account_box")])
+    ])
   },
   function() {
     var _vm = this
@@ -52944,7 +52946,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get('/api/users').then(function (response) {
-                console.log(response.data);
+                console.log(response.data.length);
                 _this.users = response.data;
             });
         }

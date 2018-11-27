@@ -25439,6 +25439,7 @@ window.Vue = __webpack_require__(15);
 
 
 
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
@@ -51741,6 +51742,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(response.data.length);
                 _this3.users = response.data;
             });
+        },
+        deleteUser: function deleteUser(user_id) {
+            var _this4 = this;
+
+            var user = {
+                user_id: user_id
+            };
+
+            console.log("the user is id " + user_id);
+
+            axios.post('/api/users/delete', user).then(function (response) {
+
+                console.log(response.data);
+                _this4.fetchUsers();
+            });
         }
     }
 
@@ -51847,7 +51863,27 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(user.email))]),
                       _vm._v(" "),
-                      _vm._m(2, true)
+                      _c("td", { staticClass: "td-actions text-right" }, [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button", rel: "tooltip" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteUser(user.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "material-icons" }, [
+                              _vm._v("close")
+                            ])
+                          ]
+                        )
+                      ])
                     ])
                   })
                 )
@@ -51921,25 +51957,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "td-actions text-right" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success",
-          attrs: { type: "button", rel: "tooltip" }
-        },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("remove_red_eye")])]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-danger",
-          attrs: { type: "button", rel: "tooltip" }
-        },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("close")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success",
+        attrs: { type: "button", rel: "tooltip" }
+      },
+      [_c("i", { staticClass: "material-icons" }, [_vm._v("remove_red_eye")])]
+    )
   }
 ]
 render._withStripped = true

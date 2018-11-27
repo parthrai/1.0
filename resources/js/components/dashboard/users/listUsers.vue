@@ -40,7 +40,7 @@
                                 <i class="material-icons">remove_red_eye</i>
                             </button>
 
-                            <button type="button" rel="tooltip" class="btn btn-danger">
+                            <button type="button" rel="tooltip" class="btn btn-danger" @click="deleteUser(user.id)">
                                 <i class="material-icons">close</i>
                             </button>
                         </td>
@@ -133,7 +133,29 @@
                     this.users=response.data
                 });
 
+            },
+
+            deleteUser(user_id){
+
+                let user ={
+                    user_id : user_id
+                }
+
+
+
+                console.log("the user is id " + user_id);
+
+                axios.post('/api/users/delete',user).then(response => {
+
+                    console.log(response.data);
+                    this.fetchUsers();
+                });
+
+
             }
+
+
+
         }
 
 

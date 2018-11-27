@@ -15,4 +15,13 @@ class UserController extends Controller
 
         return $users;
     }
+
+    public function deleteUsers(Request $request ){
+
+
+      $user = User::find($request->user_id);
+      $user->delete();
+
+      
+    }
 }

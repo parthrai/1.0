@@ -51659,6 +51659,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -51679,6 +51686,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.fetchUsers();
     },
 
+
+    computed: {
+        sortedActivity: function sortedActivity() {
+            var _this = this;
+
+            return this.users.sort(function (a, b) {
+                var modifier = 1;
+                if (_this.currentSortDir === 'desc') modifier = -1;
+                if (a[_this.currentSort] < b[_this.currentSort]) return -1 * modifier;
+                if (a[_this.currentSort] > b[_this.currentSort]) return 1 * modifier;
+                return 0;
+            }).filter(function (row, index) {
+                var start = (_this.currentPage - 1) * _this.pageSize;
+                var end = _this.currentPage * _this.pageSize;
+                if (index >= start && index < end) return true;
+            });
+        },
+
+        filteredList: function filteredList() {
+            var _this2 = this;
+
+            return this.users.filter(function (data) {
+                var email = data.email.toLowerCase().match(_this2.search.toLowerCase());
+                var name = data.name.toLowerCase().match(_this2.search.toLowerCase());
+
+                return email || name;
+            }).filter(function (row, index) {
+                var start = (_this2.currentPage - 1) * _this2.pageSize;
+                var end = _this2.currentPage * _this2.pageSize;
+                if (index >= start && index < end) return true;
+            });
+        }
+    },
     methods: {
         sort: function sort(s) {
 
@@ -51697,11 +51737,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         fetchUsers: function fetchUsers() {
-            var _this = this;
+            var _this3 = this;
 
             axios.get('/api/users').then(function (response) {
                 console.log(response.data.length);
-                _this.users = response.data;
+                _this3.users = response.data;
             });
         }
     }
@@ -51733,6 +51773,30 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "table-responsive" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.search,
+                      expression: "search"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Search" },
+                  domProps: { value: _vm.search },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.search = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
               _c("table", { staticClass: "table" }, [
                 _c("thead", [
                   _c("tr", [
@@ -51749,7 +51813,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Name")]
+                      [_vm._v("Name ")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -51761,7 +51825,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("email")]
+                      [_vm._v("email ")]
                     ),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-right" }, [_vm._v("Actions")])
@@ -51770,8 +51834,11 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.users, function(user) {
-                    return _c("tr", [
+                  _vm._l((_vm.sortedActivity, _vm.filteredList), function(
+                    user,
+                    index
+                  ) {
+                    return _c("tr", { key: index }, [
                       _c("td", { staticClass: "text-center" }, [
                         _vm._v(_vm._s(user.id))
                       ]),
@@ -51786,7 +51853,31 @@ var render = function() {
                     ])
                   })
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "float-left btn btn-outline-info btn-sm",
+                  on: { click: _vm.prevPage }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-arrow-left" }),
+                  _vm._v(" Previous")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "float-right btn btn-outline-info btn-sm",
+                  on: { click: _vm.nextPage }
+                },
+                [
+                  _vm._v("Next "),
+                  _c("i", { staticClass: "fas fa-arrow-right" })
+                ]
+              )
             ])
           ])
         ])

@@ -41,6 +41,9 @@ Vue.component('setup-loader-component', require('./components/Initials/loader.vu
 Vue.component('setup-component', require('./components/Initials/setup/setup.vue'));
 Vue.component('addUsers-component', require('./components/Initials/users/addUsers.vue'));
 
+
+
+
 const app = new Vue({
     el: '#app',
     router,

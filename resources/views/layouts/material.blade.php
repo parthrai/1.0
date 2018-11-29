@@ -178,6 +178,12 @@
                                     <span class="sidebar-normal"> Manage sites </span>
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#/sites/add">
+                                    <span class="sidebar-mini"> A </span>
+                                    <span class="sidebar-normal"> Add </span>
+                                </a>
+                            </li>
 
                         </ul>
                     </div>

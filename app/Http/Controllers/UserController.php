@@ -22,6 +22,6 @@ class UserController extends Controller
       $user = User::find($request->user_id);
       $user->delete();
 
-      
+
     }
 }

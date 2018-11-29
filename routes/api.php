@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('users','UserController@getUsers');
 Route::post('users/delete','UserController@deleteUsers');
+
+Route::get('/sites/','SiteController@index');
+Route::post('/sites/add','SiteController@addSites');

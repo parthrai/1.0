@@ -27,3 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/updateCompanyName','SetupController@setup');
 Route::post('/addAdminUser','SetupController@addAdminUsers');
+
+
+Route::get('addSite','SiteController@addSites');

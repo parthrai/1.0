@@ -23,3 +23,10 @@ Route::post('users/delete','UserController@deleteUsers');
 
 Route::get('/sites/','SiteController@index');
 Route::post('/sites/add','SiteController@addSites');
+Route::get('/sites/list','SiteController@getSites');
+
+Route::post('/sites/ssl/enable','SiteController@enableSSL');
+Route::get('/sites/ssl/disable','SiteController@disableSSL');
+
+
+Route::get('/sites/git','SiteController@addRepo');

@@ -1,6 +1,6 @@
 <template>
     <div class="col-md-6">
-        <form id="LoginValidation">
+
             <div class="card ">
                 <div class="card-header card-header-rose card-header-icon">
                     <div class="card-icon">
@@ -17,10 +17,17 @@
                     <div class="category form-category">* Required fields</div>
                 </div>
                 <div class="card-footer ml-auto mr-auto">
-                    <button type="submit" class="btn btn-rose" @click="addSites()">Add</button>
+                    <button  class="btn btn-rose" @click="addSites()">Add</button>
                 </div>
             </div>
-        </form>
+
+
+
+            <input type="file" @change="fileSelected">
+
+            <input type="button" @click="uploadFile">
+
+
     </div>
 
 </template>
@@ -32,7 +39,10 @@
         data(){
             return{
                 data:{
-                    site:''
+                    site:'',
+
+                    files:null,
+
                 }
             }
         },
@@ -43,12 +53,29 @@
 
                 console.log(this.data.site);
 
-                axios.post('/api/sites/add', this.data)
+                axios.post('/sites/add', this.data)
                     .then(response => {
                         console.log(response);
                     });
 
-            }
+            },
+
+            fileSelected(event){
+                this.files = event.target.files[0]
+
+            },
+
+            uploadFile(){
+
+                const fd = new FormData();
+                fd.append('excel',this.files,this.files.name)
+                axios.post('../sites/import',fd)
+                    .then(res=>{
+                        console.log(res)
+                    })
+                }
+
+
         }
     }
 

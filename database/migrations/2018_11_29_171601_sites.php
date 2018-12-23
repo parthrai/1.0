@@ -18,12 +18,14 @@ class Sites extends Migration
             $table->increments('id');
             $table->string('name')->default('');
             $table->integer('user_id');
+            $table->string('server_id')->default('');
+            $table->string('site_id')->default('');
+            $table->boolean('SSL');
 
             $table->string('options')->default('');
 
 
 
-            $table->rememberToken();
             $table->timestamps();
         });
 

@@ -1,11 +1,44 @@
 <template>
-    <div v-if="this.users!=0">
+    <div v-if="this.sites!=0">
+        <!-- Modal -->
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- End Modal -->
+
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
-                <div class="card-icon">
-                    <i class="material-icons">account_box</i>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="card-icon">
+                            <i class="material-icons">account_box</i>
+                        </div>
+                        <h4 class="card-title">Sites ({{this.sites.length}})</h4>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Site</button>
+                    </div>
                 </div>
-                <h4 class="card-title">Sites ({{this.users.length}})</h4>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,22 +49,28 @@
                         <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th>Avatar</th>
-                            <th @click="sort('name')">Name </th>
-                            <th @click="sort('email')">email </th>
+
+                            <th @click="sort('name')">Site </th>
+                            <th @click="sort('user')">User </th>
+                            <th>Site_ID </th>
+                            <th>Server_ID </th>
+                            <th >SSL </th>
 
                             <th class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(user, index) in (sortedActivity, filteredList)" :key="index">
+                        <tr v-for="(site, index) in (sortedActivity, filteredList)" :key="index">
 
 
-                            <td class="text-center">{{user.id}}</td>
-                            <td ><img src="https://www.pngarts.com/files/3/Avatar-PNG-Photo.png" height="70" width="70"/></td>
+                            <td class="text-center">{{site.id}}</td>
 
-                            <td>{{user.name}}</td>
-                            <td>{{user.email}}</td>
+
+                            <td>{{site.name}}</td>
+                            <td>{{site.user.name}}</td>
+                            <td>{{site.site_id}}</td>
+                            <td>{{site.server_id}}</td>
+                            <td><input type="checkbox" @change="SSLcheck(site.site_id,site.name,site.server_id,$event)"></td>
 
 
                             <td class="td-actions text-right">
@@ -68,7 +107,7 @@
         data(){
 
             return{
-                users:[],
+                sites:[],
                 currentSort:'name',
                 currentSortDir:'asc',
                 search: '',
@@ -80,12 +119,16 @@
         },
 
         created(){
-            this.fetchUsers();
+            this.fetchSites();
         },
 
         computed:{
+
+
+
             sortedActivity:function() {
-                return this.users.sort((a,b) => {
+
+                return this.sites.sort((a,b) => {
                     let modifier = 1;
                     if(this.currentSortDir === 'desc') modifier = -1;
                     if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
@@ -99,11 +142,11 @@
             },
 
             filteredList () {
-                return this.users.filter((data) => {
-                    let email = data.email.toLowerCase().match(this.search.toLowerCase());
+                return this.sites.filter((data) => {
                     let name = data.name.toLowerCase().match(this.search.toLowerCase());
+                    let user = data.user.name.toLowerCase().match(this.search.toLowerCase());
 
-                    return email || name ;
+                    return name || user ;
                 }).filter((row, index) => {
                     let start = (this.currentPage-1)*this.pageSize;
                     let end = this.currentPage*this.pageSize;
@@ -122,16 +165,46 @@
                 this.currentSort = s;
             },
             nextPage:function() {
-                if((this.currentPage*this.pageSize) < this.users.length) this.currentPage++;
+                if((this.currentPage*this.pageSize) < this.sites.length) this.currentPage++;
             },
             prevPage:function() {
                 if(this.currentPage > 1) this.currentPage--;
             },
 
-            fetchUsers(){
-                axios.get('/api/users').then(response => {
-                    console.log(response.data.length);
-                    this.users=response.data
+
+
+            SSLcheck(site_id,site_name,server_id,event){
+
+                var status = event.target.checked
+
+                console.log(event.target.checked)
+
+                var site_details = {
+                    site_id:site_id,
+                    site_name:site_name,
+                    server_id : server_id
+
+                }
+
+                if(status){
+
+                    console.log("here");
+
+                    axios.post('/api/sites/ssl/enable', site_details)
+                        .then(response => {
+                            console.log(response);
+                        });
+
+                }
+                else{
+                    console.log("theress" + status);
+                }
+            },
+
+            fetchSites(){
+                axios.get('/api/sites').then(response => {
+                    console.log("the length 9si "+response.data.length);
+                    this.sites=response.data
                 });
 
             },

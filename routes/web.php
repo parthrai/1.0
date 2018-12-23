@@ -29,4 +29,6 @@ Route::post('/updateCompanyName','SetupController@setup');
 Route::post('/addAdminUser','SetupController@addAdminUsers');
 
 
-Route::get('addSite','SiteController@addSites');
+Route::post('addSite','SiteController@addSites');
+Route::post('/sites/add','SiteController@addSites');
+Route::post('/sites/import','SiteController@importSites');

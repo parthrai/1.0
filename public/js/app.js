@@ -52101,13 +52101,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
 
         return {
-            users: [],
+            sites: [],
             currentSort: 'name',
             currentSortDir: 'asc',
             search: '',
@@ -52118,15 +52157,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        this.fetchUsers();
+        this.fetchSites();
     },
 
 
     computed: {
+
         sortedActivity: function sortedActivity() {
             var _this = this;
 
-            return this.users.sort(function (a, b) {
+            return this.sites.sort(function (a, b) {
                 var modifier = 1;
                 if (_this.currentSortDir === 'desc') modifier = -1;
                 if (a[_this.currentSort] < b[_this.currentSort]) return -1 * modifier;
@@ -52142,11 +52182,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         filteredList: function filteredList() {
             var _this2 = this;
 
-            return this.users.filter(function (data) {
-                var email = data.email.toLowerCase().match(_this2.search.toLowerCase());
+            return this.sites.filter(function (data) {
                 var name = data.name.toLowerCase().match(_this2.search.toLowerCase());
+                var user = data.user.name.toLowerCase().match(_this2.search.toLowerCase());
 
-                return email || name;
+                return name || user;
             }).filter(function (row, index) {
                 var start = (_this2.currentPage - 1) * _this2.pageSize;
                 var end = _this2.currentPage * _this2.pageSize;
@@ -52165,18 +52205,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.currentSort = s;
         },
         nextPage: function nextPage() {
-            if (this.currentPage * this.pageSize < this.users.length) this.currentPage++;
+            if (this.currentPage * this.pageSize < this.sites.length) this.currentPage++;
         },
         prevPage: function prevPage() {
             if (this.currentPage > 1) this.currentPage--;
         },
 
-        fetchUsers: function fetchUsers() {
+        SSLcheck: function SSLcheck(site_id, site_name, server_id, event) {
+
+            var status = event.target.checked;
+
+            console.log(event.target.checked);
+
+            var site_details = {
+                site_id: site_id,
+                site_name: site_name,
+                server_id: server_id
+
+            };
+
+            if (status) {
+
+                console.log("here");
+
+                axios.post('/api/sites/ssl/enable', site_details).then(function (response) {
+                    console.log(response);
+                });
+            } else {
+                console.log("theress" + status);
+            }
+        },
+        fetchSites: function fetchSites() {
             var _this3 = this;
 
-            axios.get('/api/users').then(function (response) {
-                console.log(response.data.length);
-                _this3.users = response.data;
+            axios.get('/api/sites').then(function (response) {
+                console.log("the length 9si " + response.data.length);
+                _this3.sites = response.data;
             });
         },
         deleteUser: function deleteUser(user_id) {
@@ -52206,17 +52270,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.users != 0
+  return this.sites != 0
     ? _c("div", [
+        _vm._m(0),
+        _vm._v(" "),
         _c("div", { staticClass: "card" }, [
           _c(
             "div",
             { staticClass: "card-header card-header-rose card-header-icon" },
             [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Sites (" + _vm._s(this.users.length) + ")")
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("h4", { staticClass: "card-title" }, [
+                    _vm._v("Sites (" + _vm._s(this.sites.length) + ")")
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
               ])
             ]
           ),
@@ -52252,8 +52324,6 @@ var render = function() {
                   _c("tr", [
                     _c("th", { staticClass: "text-center" }, [_vm._v("#")]),
                     _vm._v(" "),
-                    _c("th", [_vm._v("Avatar")]),
-                    _vm._v(" "),
                     _c(
                       "th",
                       {
@@ -52263,7 +52333,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Name ")]
+                      [_vm._v("Site ")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -52271,12 +52341,18 @@ var render = function() {
                       {
                         on: {
                           click: function($event) {
-                            _vm.sort("email")
+                            _vm.sort("user")
                           }
                         }
                       },
-                      [_vm._v("email ")]
+                      [_vm._v("User ")]
                     ),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Site_ID ")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Server_ID ")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("SSL ")]),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-right" }, [_vm._v("Actions")])
                   ])
@@ -52285,22 +52361,40 @@ var render = function() {
                 _c(
                   "tbody",
                   _vm._l((_vm.sortedActivity, _vm.filteredList), function(
-                    user,
+                    site,
                     index
                   ) {
                     return _c("tr", { key: index }, [
                       _c("td", { staticClass: "text-center" }, [
-                        _vm._v(_vm._s(user.id))
+                        _vm._v(_vm._s(site.id))
                       ]),
                       _vm._v(" "),
-                      _vm._m(1, true),
+                      _c("td", [_vm._v(_vm._s(site.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.name))]),
+                      _c("td", [_vm._v(_vm._s(site.user.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.email))]),
+                      _c("td", [_vm._v(_vm._s(site.site_id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(site.server_id))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          attrs: { type: "checkbox" },
+                          on: {
+                            change: function($event) {
+                              _vm.SSLcheck(
+                                site.site_id,
+                                site.name,
+                                site.server_id,
+                                $event
+                              )
+                            }
+                          }
+                        })
+                      ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "td-actions text-right" }, [
-                        _vm._m(2, true),
+                        _vm._m(3, true),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -52309,7 +52403,7 @@ var render = function() {
                             attrs: { type: "button", rel: "tooltip" },
                             on: {
                               click: function($event) {
-                                _vm.deleteUser(user.id)
+                                _vm.deleteUser(_vm.user.id)
                               }
                             }
                           },
@@ -52371,6 +52465,48 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal fade", attrs: { id: "myModal", role: "dialog" } },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              ),
+              _vm._v(" "),
+              _c("h4", { staticClass: "modal-title" }, [_vm._v("Modal Header")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("p", [_vm._v("Some text in the modal.")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-icon" }, [
       _c("i", { staticClass: "material-icons" }, [_vm._v("account_box")])
     ])
@@ -52379,14 +52515,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("img", {
-        attrs: {
-          src: "https://www.pngarts.com/files/3/Avatar-PNG-Photo.png",
-          height: "70",
-          width: "70"
-        }
-      })
+    return _c("div", { staticClass: "col-lg-3" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { "data-toggle": "modal", "data-target": "#myModal" }
+        },
+        [_vm._v("Add Site")]
+      )
     ])
   },
   function() {
@@ -52492,13 +52629,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             data: {
-                site: ''
+                site: '',
+
+                files: null
+
             }
         };
     },
@@ -52509,8 +52656,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             console.log(this.data.site);
 
-            axios.post('/api/sites/add', this.data).then(function (response) {
+            axios.post('/sites/add', this.data).then(function (response) {
                 console.log(response);
+            });
+        },
+        fileSelected: function fileSelected(event) {
+            this.files = event.target.files[0];
+        },
+        uploadFile: function uploadFile() {
+
+            var fd = new FormData();
+            fd.append('excel', this.files, this.files.name);
+            axios.post('../sites/import', fd).then(function (res) {
+                console.log(res);
             });
         }
     }
@@ -52525,68 +52683,69 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-6" }, [
-    _c("form", { attrs: { id: "LoginValidation" } }, [
-      _c("div", { staticClass: "card " }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body " }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "bmd-label-floating", attrs: { for: "siteName" } },
-              [_vm._v(" Site *")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.data.site,
-                  expression: "data.site"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "siteName",
-                required: "true",
-                name: "emailadress"
-              },
-              domProps: { value: _vm.data.site },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.data, "site", $event.target.value)
-                }
-              }
-            })
-          ]),
+    _c("div", { staticClass: "card " }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body " }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "bmd-label-floating", attrs: { for: "siteName" } },
+            [_vm._v(" Site *")]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "category form-category" }, [
-            _vm._v("* Required fields")
-          ])
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.data.site,
+                expression: "data.site"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "siteName",
+              required: "true",
+              name: "emailadress"
+            },
+            domProps: { value: _vm.data.site },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.data, "site", $event.target.value)
+              }
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-footer ml-auto mr-auto" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-rose",
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  _vm.addSites()
-                }
-              }
-            },
-            [_vm._v("Add")]
-          )
+        _c("div", { staticClass: "category form-category" }, [
+          _vm._v("* Required fields")
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer ml-auto mr-auto" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-rose",
+            on: {
+              click: function($event) {
+                _vm.addSites()
+              }
+            }
+          },
+          [_vm._v("Add")]
+        )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c("input", { attrs: { type: "file" }, on: { change: _vm.fileSelected } }),
+    _vm._v(" "),
+    _c("input", { attrs: { type: "button" }, on: { click: _vm.uploadFile } })
   ])
 }
 var staticRenderFns = [

@@ -211,11 +211,17 @@
 
             addSites(){
 
-                console.log(this.site);
+                let data ={
+                    site: this.site
+                }
 
-                axios.post('/sites/add', this.data)
+                axios.post('/sites/add', data)
                     .then(response => {
                         console.log(response);
+
+
+                        this.fetchSites();
+                        this.fetchSitesSSL();
                     });
 
             },

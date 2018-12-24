@@ -52248,33 +52248,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         addSites: function addSites() {
+            var _this3 = this;
 
-            console.log(this.site);
+            var data = {
+                site: this.site
+            };
 
-            axios.post('/sites/add', this.data).then(function (response) {
+            axios.post('/sites/add', data).then(function (response) {
                 console.log(response);
+
+                _this3.fetchSites();
+                _this3.fetchSitesSSL();
             });
         },
         fetchSites: function fetchSites() {
-            var _this3 = this;
+            var _this4 = this;
 
             axios.get('/api/sites').then(function (response) {
                 console.log("the length 9si " + response.data.length);
-                _this3.sites = response.data;
+                _this4.sites = response.data;
             });
         },
         fetchSitesSSL: function fetchSitesSSL() {
-            var _this4 = this;
+            var _this5 = this;
 
             axios.get('/api/sites/ssl/sites').then(function (response) {
 
-                _this4.sslStatus = response.data;
+                _this5.sslStatus = response.data;
 
-                _this4.sslCheck();
+                _this5.sslCheck();
             });
         },
         sslCheck: function sslCheck() {
-            var _this5 = this;
+            var _this6 = this;
 
             var _loop = function _loop(site) {
 
@@ -52286,7 +52292,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 axios.post('/api/sites/ssl/check', data).then(function (response) {
 
-                    _this5.sslStatus[site] = response.data;
+                    _this6.sslStatus[site] = response.data;
                 });
             };
 

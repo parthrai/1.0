@@ -94,6 +94,7 @@ class SiteController extends Controller
         $site_name = $request->site;
 
 
+
         $site = new Site();
         $site->user_id = Auth::user()->id;
         $site->server_id= $this->server_id;
@@ -112,7 +113,7 @@ class SiteController extends Controller
                 'domain' => $site_name,
                 'project_type' => 'php',
                 'directroy' => '/'.$site_name,
-                
+
             ]
         ]);
         $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));

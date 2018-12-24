@@ -52140,12 +52140,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
 
         return {
+            site: '',
+
             sites: [],
             currentSort: 'name',
             currentSortDir: 'asc',
@@ -52211,6 +52231,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.currentPage > 1) this.currentPage--;
         },
 
+        addSites: function addSites() {
+
+            console.log(this.site);
+
+            axios.post('/sites/add', this.data).then(function (response) {
+                console.log(response);
+            });
+        },
         SSLcheck: function SSLcheck(site_id, site_name, server_id, event) {
 
             var status = event.target.checked;
@@ -52272,7 +52300,86 @@ var render = function() {
   var _c = _vm._self._c || _h
   return this.sites != 0
     ? _c("div", [
-        _vm._m(0),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: { id: "myModal", role: "dialog" }
+          },
+          [
+            _c("div", { staticClass: "modal-dialog" }, [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "card " }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body " }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "bmd-label-floating",
+                            attrs: { for: "siteName" }
+                          },
+                          [_vm._v(" Site *")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.site,
+                              expression: "site"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "siteName",
+                            required: "true"
+                          },
+                          domProps: { value: _vm.site },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.site = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "category form-category" }, [
+                        _vm._v("* Required fields")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-footer ml-auto mr-auto" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-rose",
+                          on: {
+                            click: function($event) {
+                              _vm.addSites()
+                            }
+                          }
+                        },
+                        [_vm._v("Add")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card" }, [
           _c(
@@ -52281,14 +52388,14 @@ var render = function() {
             [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-lg-9" }, [
-                  _vm._m(1),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("h4", { staticClass: "card-title" }, [
                     _vm._v("Sites (" + _vm._s(this.sites.length) + ")")
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(4)
               ])
             ]
           ),
@@ -52394,7 +52501,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "td-actions text-right" }, [
-                        _vm._m(3, true),
+                        _vm._m(5, true),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -52465,43 +52572,49 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "modal fade", attrs: { id: "myModal", role: "dialog" } },
+      { staticClass: "card-header card-header-rose card-header-icon" },
       [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("×")]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [_vm._v("Modal Header")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("p", [_vm._v("Some text in the modal.")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              )
-            ])
-          ])
-        ])
+        _c("div", { staticClass: "card-icon" }, [
+          _c("i", { staticClass: "material-icons" }, [_vm._v("contacts")])
+        ]),
+        _vm._v(" "),
+        _c("h4", { staticClass: "card-title" }, [_vm._v("Add new website")])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
   },
   function() {
     var _vm = this

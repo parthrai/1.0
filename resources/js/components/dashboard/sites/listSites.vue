@@ -9,10 +9,28 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title"></h4>
                     </div>
                     <div class="modal-body">
-                        <p>Some text in the modal.</p>
+                        <div class="card ">
+                            <div class="card-header card-header-rose card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">contacts</i>
+                                </div>
+                                <h4 class="card-title">Add new website</h4>
+                            </div>
+                            <div class="card-body ">
+                                <div class="form-group">
+                                    <label for="siteName" class="bmd-label-floating"> Site *</label>
+                                    <input type="text" class="form-control" id="siteName" required="true"  v-model="site">
+                                </div>
+
+                                <div class="category form-category">* Required fields</div>
+                            </div>
+                            <div class="card-footer ml-auto mr-auto">
+                                <button  class="btn btn-rose" @click="addSites()">Add</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -107,6 +125,8 @@
         data(){
 
             return{
+                site:'',
+
                 sites:[],
                 currentSort:'name',
                 currentSortDir:'asc',
@@ -170,6 +190,18 @@
             prevPage:function() {
                 if(this.currentPage > 1) this.currentPage--;
             },
+
+            addSites(){
+
+                console.log(this.site);
+
+                axios.post('/sites/add', this.data)
+                    .then(response => {
+                        console.log(response);
+                    });
+
+            },
+
 
 
 

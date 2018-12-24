@@ -101,6 +101,10 @@
 
 
                             <td class="td-actions text-right">
+
+                                <button type="button" rel="tooltip" class="btn btn-warning">
+                                    <i class="material-icons">security</i>
+                                </button>
                                 <button type="button" rel="tooltip" class="btn btn-success">
                                     <i class="material-icons">remove_red_eye</i>
                                 </button>

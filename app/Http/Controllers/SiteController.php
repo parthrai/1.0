@@ -116,7 +116,8 @@ class SiteController extends Controller
 
             ]
         ]);
-        $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));
+
+        $response=  json_decode($result->getBody()->getContents(),true);
 
         $site = Site::find($site_id);
         $site->site_id = $response->site->id;

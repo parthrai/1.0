@@ -31,84 +31,6 @@ class SiteController extends Controller
     }
 
 
-
-
-    public function addSites(Request $request){
-
-        $site_name = $request->site;
-        $server_id = '219450';
-
-        $site = new Site();
-        $site->name = $site_name;
-        $site->user_id = Auth::user()->id;
-        $site->server_id= $server_id;
-        $site->SSL = false;
-        $site->save();
-        $site_id = $site->id;
-
-        $headers = [
-            'Authorization' => 'Bearer ' . $this->token,
-            'Accept'        => 'application/json',
-        ];
-            $client = new Client();
-        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites', [
-            'headers' => $headers,
-            'form_params' => [
-                'domain' => $site_name,
-                'project_type' => 'php',
-                'directroy' => '/'.$site_name,
-                'repository' => 'parthrai/1.0'
-            ]
-        ]);
-        $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));
-
-        $site = Site::find($site_id);
-        $site->site_id = $response->site->id;
-
-        $site->save();
-
-
-
-
-
-
-
-
-      return $response;
-    }
-
-    public function addRepo(){
-
-
-        $headers = [
-            'Authorization' => 'Bearer ' . $this->token,
-            'Accept'        => 'application/json',
-        ];
-        $client = new Client();
-        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/678255/git', [
-            'headers' => $headers,
-            'form_params' => [
-                'provider' => 'github',
-
-                'repository' => 'parthrai/1.0',
-
-                'branch' => 'master'
-            ]
-        ]);
-        $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));
-
-
-
-
-
-        dd($result);
-
-
-
-      //  return $response;
-
-    }
-
     public function getSites(){
 
 
@@ -164,6 +86,89 @@ class SiteController extends Controller
 
 
     }
+
+
+
+    public function addSites(Request $request){
+
+        $site_name = $request->site;
+
+
+        $site = new Site();
+        $site->user_id = Auth::user()->id;
+        $site->server_id= $this->server_id;
+
+        $site->save();
+        $site_id = $site->id;
+
+        $headers = [
+            'Authorization' => 'Bearer ' . $this->token,
+            'Accept'        => 'application/json',
+        ];
+            $client = new Client();
+        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites', [
+            'headers' => $headers,
+            'form_params' => [
+                'domain' => $site_name,
+                'project_type' => 'php',
+                'directroy' => '/'.$site_name,
+                
+            ]
+        ]);
+        $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));
+
+        $site = Site::find($site_id);
+        $site->site_id = $response->site->id;
+
+        $site->save();
+
+
+
+
+
+
+
+
+      return $response;
+    }
+
+    public function addRepo(){
+
+
+        $headers = [
+            'Authorization' => 'Bearer ' . $this->token,
+            'Accept'        => 'application/json',
+        ];
+        $client = new Client();
+        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/678255/git', [
+            'headers' => $headers,
+            'form_params' => [
+                'provider' => 'github',
+
+                'repository' => 'parthrai/1.0',
+
+                'branch' => 'master'
+            ]
+        ]);
+        $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));
+
+
+
+
+
+        dd($result);
+
+
+
+      //  return $response;
+
+    }
+
+
+
+
+
+   /******************************** SITE SSL FUNCTIONS  ************************************/
 
     public function getSites_SSL(){
 
@@ -268,6 +273,10 @@ class SiteController extends Controller
 
 
     }
+
+
+    /*******************************  END SITE SSL FUNCTION ********************************/
+
 
 
 }

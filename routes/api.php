@@ -25,8 +25,13 @@ Route::get('/sites/','SiteController@getSites');
 Route::post('/sites/add','SiteController@addSites');
 Route::get('/sites/list','SiteController@getSites');
 
-Route::post('/sites/ssl/enable','SiteController@enableSSL');
-Route::get('/sites/ssl/disable','SiteController@disableSSL');
 
+/***************   SITE SSL ROUTES  *******************/
+
+Route::get('/sites/ssl/sites','SiteController@getSites_SSL');
+Route::post('sites/ssl/check','SiteController@SSLCheck');
+Route::post('/sites/ssl/enable','SiteController@enableSSL');
+
+/***************   END SITE SSL ROUTES  *******************/
 
 Route::get('/sites/git','SiteController@addRepo');

@@ -52158,6 +52158,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -52167,6 +52176,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             site: '',
 
             sites: [],
+            sslStatus: [],
+
             currentSort: 'name',
             currentSortDir: 'asc',
             search: '',
@@ -52178,6 +52189,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.fetchSites();
+        this.fetchSitesSSL();
     },
 
 
@@ -52203,8 +52215,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             return this.sites.filter(function (data) {
-                var name = data.name.toLowerCase().match(_this2.search.toLowerCase());
-                var user = data.user.name.toLowerCase().match(_this2.search.toLowerCase());
+                var name = data.site_name.toLowerCase().match(_this2.search.toLowerCase());
+                var user = data.username.toLowerCase().match(_this2.search.toLowerCase());
 
                 return name || user;
             }).filter(function (row, index) {
@@ -52239,30 +52251,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(response);
             });
         },
-        SSLcheck: function SSLcheck(site_id, site_name, server_id, event) {
-
-            var status = event.target.checked;
-
-            console.log(event.target.checked);
-
-            var site_details = {
-                site_id: site_id,
-                site_name: site_name,
-                server_id: server_id
-
-            };
-
-            if (status) {
-
-                console.log("here");
-
-                axios.post('/api/sites/ssl/enable', site_details).then(function (response) {
-                    console.log(response);
-                });
-            } else {
-                console.log("theress" + status);
-            }
-        },
         fetchSites: function fetchSites() {
             var _this3 = this;
 
@@ -52271,20 +52259,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.sites = response.data;
             });
         },
-        deleteUser: function deleteUser(user_id) {
+        fetchSitesSSL: function fetchSitesSSL() {
             var _this4 = this;
 
-            var user = {
-                user_id: user_id
+            axios.get('/api/sites/ssl/sites').then(function (response) {
+
+                _this4.sslStatus = response.data;
+
+                _this4.sslCheck();
+            });
+        },
+        sslCheck: function sslCheck() {
+            var _this5 = this;
+
+            var _loop = function _loop(site) {
+
+                console.log("id = " + site);
+
+                var data = {
+                    site: site
+                };
+
+                axios.post('/api/sites/ssl/check', data).then(function (response) {
+
+                    _this5.sslStatus[site] = response.data;
+                });
             };
 
-            console.log("the user is id " + user_id);
-
-            axios.post('/api/users/delete', user).then(function (response) {
-
-                console.log(response.data);
-                _this4.fetchUsers();
-            });
+            for (var site in this.sslStatus) {
+                _loop(site);
+            }
         }
     }
 
@@ -52436,7 +52440,7 @@ var render = function() {
                       {
                         on: {
                           click: function($event) {
-                            _vm.sort("name")
+                            _vm.sort("site_name")
                           }
                         }
                       },
@@ -52448,16 +52452,12 @@ var render = function() {
                       {
                         on: {
                           click: function($event) {
-                            _vm.sort("user")
+                            _vm.sort("username")
                           }
                         }
                       },
                       [_vm._v("User ")]
                     ),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Site_ID ")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Server_ID ")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("SSL ")]),
                     _vm._v(" "),
@@ -52473,31 +52473,31 @@ var render = function() {
                   ) {
                     return _c("tr", { key: index }, [
                       _c("td", { staticClass: "text-center" }, [
-                        _vm._v(_vm._s(site.id))
+                        _vm._v(_vm._s(site.site_id))
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(site.name))]),
+                      _c("td", [_vm._v(_vm._s(site.site_name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(site.user.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(site.site_id))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(site.server_id))]),
+                      _c("td", [_vm._v(_vm._s(site.username))]),
                       _vm._v(" "),
                       _c("td", [
-                        _c("input", {
-                          attrs: { type: "checkbox" },
-                          on: {
-                            change: function($event) {
-                              _vm.SSLcheck(
-                                site.site_id,
-                                site.name,
-                                site.server_id,
-                                $event
+                        _vm.sslStatus[site.site_id] == "undef"
+                          ? _c("span", [
+                              _c("img", {
+                                attrs: {
+                                  src: __webpack_require__(85),
+                                  height: "40",
+                                  width: "50"
+                                }
+                              })
+                            ])
+                          : _c("span", [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(_vm.sslStatus[site.site_id]) +
+                                  "\n                            "
                               )
-                            }
-                          }
-                        })
+                            ])
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "td-actions text-right" }, [
@@ -52950,7 +52950,7 @@ var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("296ac365", content, false, {});
+var update = __webpack_require__(4)("03a1ad90", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53224,7 +53224,7 @@ var content = __webpack_require__(70);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("0778daec", content, false, {});
+var update = __webpack_require__(4)("636a5768", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53326,7 +53326,7 @@ var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("4ac02ef2", content, false, {});
+var update = __webpack_require__(4)("4809e8b4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53545,7 +53545,7 @@ var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("2f191392", content, false, {});
+var update = __webpack_require__(4)("5cf8ef76", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53940,6 +53940,15 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/loading_dots.gif?26b6ee98a0ae7db6b83f90e65b1448bd";
 
 /***/ })
 /******/ ]);

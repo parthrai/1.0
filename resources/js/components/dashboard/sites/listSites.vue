@@ -68,10 +68,10 @@
                         <tr>
                             <th class="text-center">#</th>
 
-                            <th @click="sort('name')">Site </th>
-                            <th @click="sort('user')">User </th>
-                            <th>Site_ID </th>
-                            <th>Server_ID </th>
+                            <th @click="sort('site_name')">Site </th>
+                            <th @click="sort('username')">User </th>
+
+
                             <th >SSL </th>
 
                             <th class="text-right">Actions</th>
@@ -81,14 +81,23 @@
                         <tr v-for="(site, index) in (sortedActivity, filteredList)" :key="index">
 
 
-                            <td class="text-center">{{site.id}}</td>
+
+                            <td class="text-center">{{site.site_id}}</td>
 
 
-                            <td>{{site.name}}</td>
-                            <td>{{site.user.name}}</td>
-                            <td>{{site.site_id}}</td>
-                            <td>{{site.server_id}}</td>
-                            <td><input type="checkbox" @change="SSLcheck(site.site_id,site.name,site.server_id,$event)"></td>
+                            <td>{{site.site_name}}</td>
+                            <td>{{site.username}}</td>
+
+
+                            <td>
+                                <span v-if="sslStatus[site.site_id]=='undef'">
+                                    <img src="../../../images/loading_dots.gif" height="40" width="50">
+                                </span>
+                                <span v-else>
+                                    {{sslStatus[site.site_id]}}
+                                </span>
+
+                            </td>
 
 
                             <td class="td-actions text-right">
@@ -128,6 +137,10 @@
                 site:'',
 
                 sites:[],
+                sslStatus:[],
+
+
+
                 currentSort:'name',
                 currentSortDir:'asc',
                 search: '',
@@ -140,6 +153,7 @@
 
         created(){
             this.fetchSites();
+            this.fetchSitesSSL()
         },
 
         computed:{
@@ -163,8 +177,8 @@
 
             filteredList () {
                 return this.sites.filter((data) => {
-                    let name = data.name.toLowerCase().match(this.search.toLowerCase());
-                    let user = data.user.name.toLowerCase().match(this.search.toLowerCase());
+                    let name = data.site_name.toLowerCase().match(this.search.toLowerCase());
+                    let user = data.username.toLowerCase().match(this.search.toLowerCase());
 
                     return name || user ;
                 }).filter((row, index) => {
@@ -205,33 +219,7 @@
 
 
 
-            SSLcheck(site_id,site_name,server_id,event){
 
-                var status = event.target.checked
-
-                console.log(event.target.checked)
-
-                var site_details = {
-                    site_id:site_id,
-                    site_name:site_name,
-                    server_id : server_id
-
-                }
-
-                if(status){
-
-                    console.log("here");
-
-                    axios.post('/api/sites/ssl/enable', site_details)
-                        .then(response => {
-                            console.log(response);
-                        });
-
-                }
-                else{
-                    console.log("theress" + status);
-                }
-            },
 
             fetchSites(){
                 axios.get('/api/sites').then(response => {
@@ -241,23 +229,37 @@
 
             },
 
-            deleteUser(user_id){
+            fetchSitesSSL(){
 
-                let user ={
-                    user_id : user_id
-                }
+                axios.get('/api/sites/ssl/sites').then(response => {
 
+                    this.sslStatus=response.data;
 
+                    this.sslCheck()
+                })
 
-                console.log("the user is id " + user_id);
-
-                axios.post('/api/users/delete',user).then(response => {
-
-                    console.log(response.data);
-                    this.fetchUsers();
-                });
+            },
 
 
+            sslCheck(){
+              for(let site in this.sslStatus){
+
+
+
+                  console.log("id = " + site)
+
+
+
+                  let data={
+                      site:site
+                  }
+
+                  axios.post('/api/sites/ssl/check',data).then(response => {
+
+                      this.sslStatus[site]=response.data
+                  })
+
+              }
             }
 
 

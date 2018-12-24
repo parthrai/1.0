@@ -56,10 +56,12 @@ class SiteController extends Controller
 
             $user_name = '';
 
-            if($site_name['user']['username'] == null)
+
+
+            if($site_name['user']['name'] == null)
                 $user_name='System';
             else
-                $user_name= $site_name['user']['username'];
+                $user_name= $site_name['user']['name'];
 
 
             $sites[] = array(
@@ -120,7 +122,8 @@ class SiteController extends Controller
         $response=  json_decode($result->getBody()->getContents(),true);
 
         $site = Site::find($site_id);
-        $site->site_id = $response->site->id;
+
+        $site->site_id = $response["site"]["id"];
 
         $site->save();
 

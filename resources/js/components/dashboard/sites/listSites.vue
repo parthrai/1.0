@@ -1,46 +1,5 @@
 <template>
     <div v-if="this.sites!=0">
-        <!-- Modal -->
-
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card ">
-                            <div class="card-header card-header-rose card-header-icon">
-                                <div class="card-icon">
-                                    <i class="material-icons">contacts</i>
-                                </div>
-                                <h4 class="card-title">Add new website</h4>
-                            </div>
-                            <div class="card-body ">
-                                <div class="form-group">
-                                    <label for="siteName" class="bmd-label-floating"> Site *</label>
-                                    <input type="text" class="form-control" id="siteName" required="true"  v-model="site">
-                                </div>
-
-                                <div class="category form-category">* Required fields</div>
-                            </div>
-                            <div class="card-footer ml-auto mr-auto">
-                                <button  class="btn btn-rose" @click="addSites()">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- End Modal -->
 
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
@@ -53,7 +12,8 @@
 
                     </div>
                     <div class="col-lg-3">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Site</button>
+                        <a href="#/sites/add" class="btn btn-primary">Add Site</a>
+
                     </div>
                 </div>
 
@@ -103,7 +63,7 @@
                             <td class="td-actions text-right">
 
                                 <button type="button" rel="tooltip" class="btn btn-warning">
-                                    <i class="material-icons">security</i>
+                                    <i class="material-icons" @click="enableSSL(site)">security</i>
                                 </button>
                                 <button type="button" rel="tooltip" class="btn btn-success">
                                     <i class="material-icons">remove_red_eye</i>
@@ -226,11 +186,6 @@
 
             },
 
-
-
-
-
-
             fetchSites(){
                 axios.get('/api/sites').then(response => {
                     console.log("the length 9si "+response.data.length);
@@ -270,6 +225,27 @@
                   })
 
               }
+            },
+
+
+            enableSSL(site){
+                console.log("hello")
+
+                let data={
+                    site_id:site.site_id,
+                    site_name:site.site_name
+                }
+
+                axios.post('/api/sites/ssl/enable',data).then(response => {
+
+                    console.log(response.data)
+
+                    this.fetchSitesSSL();
+                })
+
+
+
+
             }
 
 

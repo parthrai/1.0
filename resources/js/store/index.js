@@ -9,6 +9,8 @@ export const store = new Vuex.Store({
 
         component: 'SetupComponent',
 
+        Loader_addsite :'addSiteComponent'
+
 
 
     },
@@ -25,6 +27,12 @@ export const store = new Vuex.Store({
         },
 
 
+        mut_addSite(state,n){
+
+            state.Loader_addsite = n
+        }
+
+
     },
 
 
@@ -35,6 +43,12 @@ export const store = new Vuex.Store({
 
         getComponent(state){
             return state.component
+        },
+
+
+        getLoader_addSite(state){
+
+            return state.Loader_addsite
         },
 
         getSetupInfo(state){

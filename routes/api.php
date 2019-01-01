@@ -34,4 +34,4 @@ Route::post('/sites/ssl/enable','SiteController@enableSSL');
 
 /***************   END SITE SSL ROUTES  *******************/
 
-Route::get('/sites/git','SiteController@addRepo');
+Route::post('/sites/git','SiteController@addRepo');

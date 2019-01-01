@@ -9,7 +9,11 @@ export const store = new Vuex.Store({
 
         component: 'SetupComponent',
 
-        Loader_addsite :'addSiteComponent'
+        Loader_addsite :{
+            component:'addSiteComponent',
+            site_name:'',
+            site_id:''
+        }
 
 
 
@@ -27,10 +31,19 @@ export const store = new Vuex.Store({
         },
 
 
-        mut_addSite(state,n){
+        mut_addSite_component(state,n){
 
-            state.Loader_addsite = n
+            state.Loader_addsite.component = n
+        },
+
+        mut_addSite_site_name(state,n){
+            state.Loader_addsite.site_name=n
+        },
+
+        mut_addSite_site_id(state,n){
+            state.Loader_addsite.site_id=n
         }
+
 
 
     },
@@ -41,9 +54,7 @@ export const store = new Vuex.Store({
 
     getters:{
 
-        getComponent(state){
-            return state.component
-        },
+
 
 
         getLoader_addSite(state){

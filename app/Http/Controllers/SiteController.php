@@ -114,7 +114,7 @@ class SiteController extends Controller
             'form_params' => [
                 'domain' => $site_name,
                 'project_type' => 'php',
-                'directroy' => '/'.$site_name,
+                'directroy' => '/public',
 
             ]
         ]);
@@ -137,37 +137,7 @@ class SiteController extends Controller
       return $response;
     }
 
-    public function addRepo(){
 
-
-        $headers = [
-            'Authorization' => 'Bearer ' . $this->token,
-            'Accept'        => 'application/json',
-        ];
-        $client = new Client();
-        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/678255/git', [
-            'headers' => $headers,
-            'form_params' => [
-                'provider' => 'github',
-
-                'repository' => 'parthrai/1.0',
-
-                'branch' => 'master'
-            ]
-        ]);
-        $response= json_decode(json_decode(json_encode($result->getBody()->getContents(),true)));
-
-
-
-
-
-        dd($result);
-
-
-
-      //  return $response;
-
-    }
 
 
 
@@ -283,5 +253,50 @@ class SiteController extends Controller
     /*******************************  END SITE SSL FUNCTION ********************************/
 
 
+
+
+    public function addRepo(Request $request){
+
+
+        $site_id = $request->site_id;
+
+
+        $headers = [
+            'Authorization' => 'Bearer ' . $this->token,
+            'Accept'        => 'application/json',
+        ];
+        $client = new Client();
+        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/git', [
+            'headers' => $headers,
+            'form_params' => [
+                'provider' => 'github',
+
+                'repository' => 'parthrai/1.0',
+
+                'branch' => 'master'
+            ]
+        ]);
+
+
+
+        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/deploy', [
+            'headers' => $headers,
+
+        ]);
+
+
+        $response=  json_decode($result->getBody()->getContents(),true);
+
+
+
+
+
+
+
+
+
+          return $response;
+
+    }
 
 }

@@ -35,7 +35,11 @@
                 get(){
 
 
-                    return this.$store.getters.getLoader_addSite;
+                    let comp=  this.$store.getters.getLoader_addSite;
+
+
+
+                    return comp.component
                 }
 
 

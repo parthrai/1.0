@@ -54,12 +54,20 @@
                    site:this.data.site
                }
 
+               let newData = {
+                   component:'siteTemplateComponent',
+                   site_name:this.data.site
+               }
+
                 axios.post('/sites/add', data)
                     .then(response => {
                         console.log(response);
 
 
-                        store.commit("mut_addSite", "siteTemplateComponent")
+                        store.commit("mut_addSite_component",'siteTemplateComponent')
+                        store.commit("mut_addSite_site_name",this.data.site)
+                        store.commit("mut_addSite_site_id",response.data.site.id)
+
                     });
 
 

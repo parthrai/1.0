@@ -138,7 +138,47 @@ class SiteController extends Controller
     }
 
 
+    public function deleteSite(Request $request){
 
+
+
+        $site_id = $request->site_id;
+
+      //  $site = Site::where('site_id',$site_id)->first();
+
+
+        $headers = [
+            'Authorization' => 'Bearer ' . $this->token,
+            'Accept'        => 'application/json',
+        ];
+
+        try {
+            $client = new Client();
+            $result = $client->delete('https://forge.laravel.com/api/v1/servers/219450/sites/' . $site_id);
+        }
+        catch (\Exception $exception)
+        {
+            return $exception;
+        }
+
+        return $result->getBody()->getContents();
+
+        $response=  json_decode($result->getBody()->getContents(),true);
+
+       //  Site::destroy($site->id);
+
+
+
+
+
+
+
+
+
+
+        return $response;
+
+    }
 
 
 

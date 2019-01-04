@@ -13,6 +13,7 @@
                     </div>
                     <div class="col-lg-3">
                         <a href="#/sites/add" class="btn btn-primary">Add Site</a>
+                        <button class="btn btn-primary" @click="deleteSite">dialog</button>
 
                     </div>
                 </div>
@@ -69,7 +70,7 @@
                                     <i class="material-icons">remove_red_eye</i>
                                 </button>
 
-                                <button type="button" rel="tooltip" class="btn btn-danger" @click="deleteUser(user.id)">
+                                <button type="button" rel="tooltip" class="btn btn-danger" @click="deleteSite(site)">
                                     <i class="material-icons">close</i>
                                 </button>
                             </td>
@@ -236,16 +237,51 @@
                     site_name:site.site_name
                 }
 
-                axios.post('/api/sites/ssl/enable',data).then(response => {
-
-                    console.log(response.data)
-
-                    this.fetchSitesSSL();
-                })
+                let ref= this
 
 
 
 
+                Vue.dialog.confirm('Would you like to enable SSL for  '+site.site_name +' ?  ')
+                    .then(function (dialog) {
+                        axios.post('/api/sites/ssl/enable',data).then(response => {
+
+                            console.log(response.data)
+
+                            ref.fetchSitesSSL();
+                        })
+                    })
+                    .catch(function () {
+                        console.log('Clicked on cancel')
+                    });
+
+
+
+
+            },
+
+
+
+            deleteSite(site){
+
+
+                let data={
+                    site_id:site.site_id
+                }
+
+
+                Vue.dialog.confirm('Are you sure you want to delete '+site.site_name +' ?  ')
+                    .then(function (dialog) {
+                        axios.post('/api/sites/delete',data).then(response => {
+
+                            console.log(response.data)
+
+
+                        })
+                    })
+                    .catch(function () {
+                        console.log('Clicked on cancel')
+                    });
             }
 
 

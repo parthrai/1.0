@@ -11,11 +11,13 @@ window.Vue = require('vue');
 
 import {store} from './store/index'
 import VueRouter from 'vue-router'
+import VuejsDialog from 'vuejs-dialog'
 
 
 import routes from './routes'
 
 Vue.use(VueRouter)
+Vue.use(VuejsDialog)
 
 
 const router = new VueRouter({

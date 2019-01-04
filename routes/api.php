@@ -21,10 +21,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('users','UserController@getUsers');
 Route::post('users/delete','UserController@deleteUsers');
 
+/***************   SITE CRUD ROUTES  *******************/
+
+
 Route::get('/sites/','SiteController@getSites');
 Route::post('/sites/add','SiteController@addSites');
 Route::get('/sites/list','SiteController@getSites');
 
+
+Route::post('/sites/delete','SiteController@deleteSite');
+
+/***************  END SITE CRUD ROUTES  *******************/
 
 /***************   SITE SSL ROUTES  *******************/
 

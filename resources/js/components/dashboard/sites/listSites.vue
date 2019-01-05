@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-lg-3">
                         <a href="#/sites/add" class="btn btn-primary">Add Site</a>
-                        <button class="btn btn-primary" @click="deleteSite">dialog</button>
+
 
                     </div>
                 </div>
@@ -154,6 +154,8 @@
             }
         },
         methods:{
+
+            /*********************** DATA TABLE FUNCTIONS ******************************/
             sort:function(s) {
 
                 console.log("here")
@@ -169,6 +171,11 @@
             prevPage:function() {
                 if(this.currentPage > 1) this.currentPage--;
             },
+
+            /*********************** END DATA TABLE FUNCTIONS ******************************/
+
+
+            /*********************** SITES FUNCTIONS ******************************/
 
             addSites(){
 
@@ -188,12 +195,48 @@
             },
 
             fetchSites(){
+                console.log("heeeeree")
+
                 axios.get('/api/sites').then(response => {
-                    console.log("the length 9si "+response.data.length);
+
                     this.sites=response.data
                 });
 
             },
+
+            deleteSite(site){
+
+
+                let data={
+                    site_id:site.site_id
+                }
+                let ref = this
+
+
+                Vue.dialog.confirm('Are you sure you want to delete '+site.site_name +' ?  ')
+                    .then(function (dialog) {
+                        axios.post('/api/sites/delete',data).then(response => {
+
+                            //  console.log(response.data)
+
+                            console.log("deleted")
+                            ref.fetchSites();
+
+
+                        })
+
+                        console.log("in dialog");
+                    })
+                    .catch(function () {
+                        console.log('Clicked on cancel')
+                    });
+            },
+
+
+            /*********************** END SITES FUNCTIONS ******************************/
+
+
+            /*********************** SSL FUNCTIONS ******************************/
 
             fetchSitesSSL(){
 
@@ -208,24 +251,24 @@
 
 
             sslCheck(){
-              for(let site in this.sslStatus){
+                for(let site in this.sslStatus){
 
 
 
-                  console.log("id = " + site)
+                    console.log("id = " + site)
 
 
 
-                  let data={
-                      site:site
-                  }
+                    let data={
+                        site:site
+                    }
 
-                  axios.post('/api/sites/ssl/check',data).then(response => {
+                    axios.post('/api/sites/ssl/check',data).then(response => {
 
-                      this.sslStatus[site]=response.data
-                  })
+                        this.sslStatus[site]=response.data
+                    })
 
-              }
+                }
             },
 
 
@@ -262,27 +305,11 @@
 
 
 
-            deleteSite(site){
+            /*********************** END SSL FUNCTIONS ******************************/
 
 
-                let data={
-                    site_id:site.site_id
-                }
 
 
-                Vue.dialog.confirm('Are you sure you want to delete '+site.site_name +' ?  ')
-                    .then(function (dialog) {
-                        axios.post('/api/sites/delete',data).then(response => {
-
-                            console.log(response.data)
-
-
-                        })
-                    })
-                    .catch(function () {
-                        console.log('Clicked on cancel')
-                    });
-            }
 
 
 

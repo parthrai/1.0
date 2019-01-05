@@ -52321,6 +52321,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+
+        /*********************** DATA TABLE FUNCTIONS ******************************/
         sort: function sort(s) {
 
             console.log("here");
@@ -52336,6 +52338,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         prevPage: function prevPage() {
             if (this.currentPage > 1) this.currentPage--;
         },
+
+        /*********************** END DATA TABLE FUNCTIONS ******************************/
+
+        /*********************** SITES FUNCTIONS ******************************/
 
         addSites: function addSites() {
             var _this3 = this;
@@ -52354,11 +52360,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchSites: function fetchSites() {
             var _this4 = this;
 
+            console.log("heeeeree");
+
             axios.get('/api/sites').then(function (response) {
-                console.log("the length 9si " + response.data.length);
+
                 _this4.sites = response.data;
             });
         },
+        deleteSite: function deleteSite(site) {
+
+            var data = {
+                site_id: site.site_id
+            };
+            var ref = this;
+
+            Vue.dialog.confirm('Are you sure you want to delete ' + site.site_name + ' ?  ').then(function (dialog) {
+                axios.post('/api/sites/delete', data).then(function (response) {
+
+                    //  console.log(response.data)
+
+                    console.log("deleted");
+                    ref.fetchSites();
+                });
+
+                console.log("in dialog");
+            }).catch(function () {
+                console.log('Clicked on cancel');
+            });
+        },
+
+
+        /*********************** END SITES FUNCTIONS ******************************/
+
+        /*********************** SSL FUNCTIONS ******************************/
+
         fetchSitesSSL: function fetchSitesSSL() {
             var _this5 = this;
 
@@ -52410,21 +52445,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function () {
                 console.log('Clicked on cancel');
             });
-        },
-        deleteSite: function deleteSite(site) {
-
-            var data = {
-                site_id: site.site_id
-            };
-
-            Vue.dialog.confirm('Are you sure you want to delete ' + site.site_name + ' ?  ').then(function (dialog) {
-                axios.post('/api/sites/delete', data).then(function (response) {
-
-                    console.log(response.data);
-                });
-            }).catch(function () {
-                console.log('Clicked on cancel');
-            });
         }
     }
 
@@ -52454,25 +52474,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-lg-3" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { href: "#/sites/add" }
-                    },
-                    [_vm._v("Add Site")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: { click: _vm.deleteSite }
-                    },
-                    [_vm._v("dialog")]
-                  )
-                ])
+                _vm._m(1)
               ])
             ]
           ),
@@ -52596,7 +52598,7 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._m(1, true),
+                        _vm._m(2, true),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -52669,6 +52671,18 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-icon" }, [
       _c("i", { staticClass: "material-icons" }, [_vm._v("account_box")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3" }, [
+      _c(
+        "a",
+        { staticClass: "btn btn-primary", attrs: { href: "#/sites/add" } },
+        [_vm._v("Add Site")]
+      )
     ])
   },
   function() {
@@ -53104,7 +53118,7 @@ var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("c56ba546", content, false, {});
+var update = __webpack_require__(4)("54902564", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53313,7 +53327,7 @@ var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("03a1ad90", content, false, {});
+var update = __webpack_require__(4)("296ac365", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53554,7 +53568,7 @@ var content = __webpack_require__(80);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("636a5768", content, false, {});
+var update = __webpack_require__(4)("0778daec", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53656,7 +53670,7 @@ var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("4809e8b4", content, false, {});
+var update = __webpack_require__(4)("4ac02ef2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -53875,7 +53889,7 @@ var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("5cf8ef76", content, false, {});
+var update = __webpack_require__(4)("2f191392", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

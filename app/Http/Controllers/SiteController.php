@@ -30,6 +30,7 @@ class SiteController extends Controller
 
     }
 
+    /******************************** SITE CRUD FUNCTIONS  ************************************/
 
     public function getSites(){
 
@@ -89,8 +90,6 @@ class SiteController extends Controller
 
     }
 
-
-
     public function addSites(Request $request){
 
         $site_name = $request->site;
@@ -137,14 +136,13 @@ class SiteController extends Controller
       return $response;
     }
 
-
     public function deleteSite(Request $request){
 
 
 
         $site_id = $request->site_id;
 
-      //  $site = Site::where('site_id',$site_id)->first();
+        $site = Site::where('site_id',$site_id)->first();
 
 
         $headers = [
@@ -154,18 +152,20 @@ class SiteController extends Controller
 
         try {
             $client = new Client();
-            $result = $client->delete('https://forge.laravel.com/api/v1/servers/219450/sites/' . $site_id);
+            $result = $client->delete('https://forge.laravel.com/api/v1/servers/219450/sites/' . $site_id,
+                [ 'headers' => $headers]);
         }
         catch (\Exception $exception)
         {
             return $exception;
         }
 
-        return $result->getBody()->getContents();
+        
+
 
         $response=  json_decode($result->getBody()->getContents(),true);
 
-       //  Site::destroy($site->id);
+         Site::destroy($site->id);
 
 
 
@@ -179,6 +179,9 @@ class SiteController extends Controller
         return $response;
 
     }
+
+
+    /******************************** END SITE CRUD FUNCTIONS  ************************************/
 
 
 

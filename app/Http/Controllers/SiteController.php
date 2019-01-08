@@ -160,7 +160,7 @@ class SiteController extends Controller
             return $exception;
         }
 
-        
+
 
 
         $response=  json_decode($result->getBody()->getContents(),true);

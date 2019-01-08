@@ -1,5 +1,7 @@
 <template>
     <div v-if="this.sites!=0">
+        <notifications group="foo"   />
+
 
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
@@ -222,6 +224,13 @@
                             console.log("deleted")
                             ref.fetchSites();
 
+                            ref.$notify({
+                                group: 'foo',
+                                title: 'Important message',
+                                type:'warn',
+                                text: 'Site deleted !'
+                            });
+
 
                         })
 
@@ -292,6 +301,13 @@
                             console.log(response.data)
 
                             ref.fetchSitesSSL();
+
+                            ref.$notify({
+                                group: 'foo',
+                                title: 'Important message',
+                                type:'success',
+                                text: 'SSL Enabled for '+ data.site_name +' !'
+                            });
                         })
                     })
                     .catch(function () {

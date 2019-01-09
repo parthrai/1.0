@@ -72,6 +72,7 @@
 
                 let data={
                     site_id : this.site_id,
+                    site_name : this.site_name,
                     template: event.target.id
                 }
 

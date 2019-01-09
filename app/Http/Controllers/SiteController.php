@@ -113,7 +113,7 @@ class SiteController extends Controller
             'form_params' => [
                 'domain' => $site_name,
                 'project_type' => 'php',
-                'directroy' => '/public',
+                'directory' => '/public',
 
             ]
         ]);
@@ -133,7 +133,7 @@ class SiteController extends Controller
 
 
 
-      return $response;
+        return $response;
     }
 
     public function deleteSite(Request $request){
@@ -302,6 +302,10 @@ class SiteController extends Controller
 
 
         $site_id = $request->site_id;
+        $site_name = $request->site_name;
+
+
+
 
 
         $headers = [
@@ -321,14 +325,48 @@ class SiteController extends Controller
         ]);
 
 
+        $d_script= "cd /home/forge/".$site_name."
+php artisan key:generate
+composer install --no-interaction --prefer-dist --optimize-autoloader
+echo \"\" | sudo -S service php7.2-fpm reload
 
-        $result = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/deploy', [
+if [ -f artisan ]
+then
+   
+    php artisan migrate --force
+    php artisan db:seed --class=initialTableSeeder
+fi";
+
+
+        $result = $client->put('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/script', [
+            'headers' => $headers,
+            'form_params' => [
+
+
+                'content' => $d_script
+            ]
+
+        ]);
+
+
+
+
+
+
+
+
+        $deployment = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/deploy', [
             'headers' => $headers,
 
         ]);
 
 
-        $response=  json_decode($result->getBody()->getContents(),true);
+        $response=  json_decode($deployment->getBody()->getContents(),true);
+
+
+        return $response;
+
+
 
 
 

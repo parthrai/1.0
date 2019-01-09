@@ -54075,6 +54075,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -54105,6 +54107,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         select: function select(event) {
+            var _this = this;
 
             var data = {
                 site_id: this.site_id,
@@ -54116,9 +54119,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/api/sites/git', data).then(function (response) {
                 console.log(response);
+
+                _this.deploy();
             });
 
             console.log("clicked " + event.target.id);
+        },
+        deploy: function deploy() {
+
+            var data = {
+                site_id: this.site_id,
+                site_name: this.site_name,
+                template: event.target.id
+            };
+
+            console.log(data);
+
+            axios.post('/api/sites/deploy', data).then(function (response) {
+                console.log(response);
+
+                console.log("deployed");
+            });
         }
     }
 
@@ -54141,6 +54162,12 @@ var render = function() {
           _vm._s(_vm.getSite.site_id)
       )
     ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", on: { click: _vm.deploy } },
+      [_vm._v("Deploy")]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-3" }, [

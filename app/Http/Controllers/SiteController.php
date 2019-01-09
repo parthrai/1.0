@@ -324,15 +324,17 @@ class SiteController extends Controller
             ]
         ]);
 
+        sleep(6);
+
 
         $d_script= "cd /home/forge/".$site_name."
-php artisan key:generate
+
 composer install --no-interaction --prefer-dist --optimize-autoloader
 echo \"\" | sudo -S service php7.2-fpm reload
 
 if [ -f artisan ]
 then
-   
+    php artisan key:generate   
     php artisan migrate --force
     php artisan db:seed --class=initialTableSeeder
 fi";
@@ -354,17 +356,8 @@ fi";
 
 
 
+        $response=  json_decode($result->getBody()->getContents(),true);
 
-        $deployment = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/deploy', [
-            'headers' => $headers,
-
-        ]);
-
-
-        $response=  json_decode($deployment->getBody()->getContents(),true);
-
-
-        return $response;
 
 
 
@@ -377,6 +370,32 @@ fi";
 
 
           return $response;
+
+    }
+
+
+    public function deploy(Request $request){
+        $site_id = $request->site_id;
+        $site_name = $request->site_name;
+
+        $headers = [
+            'Authorization' => 'Bearer ' . $this->token,
+            'Accept'        => 'application/json',
+        ];
+
+        $client = new Client();
+        $deployment = $client->post('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/deploy', [
+            'headers' => $headers,
+
+        ]);
+
+
+        $response=  json_decode($deployment->getBody()->getContents(),true);
+
+
+        return $response;
+
+
 
     }
 

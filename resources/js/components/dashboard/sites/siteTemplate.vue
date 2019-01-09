@@ -3,6 +3,8 @@
 
         <h1>Select site template for {{getSite.site_name}} with id {{getSite.site_id}}</h1>
 
+        <button class="btn btn-primary" @click="deploy">Deploy</button>
+
         <div class="row">
             <div class="col-lg-3">
                 <h3>Template1</h3>
@@ -83,11 +85,36 @@
                         console.log(response);
 
 
+                        this.deploy();
+
 
 
                     });
 
                 console.log("clicked "+event.target.id)
+
+            },
+
+
+            deploy(){
+
+                let data={
+                    site_id : this.site_id,
+                    site_name : this.site_name,
+                    template: event.target.id
+                }
+
+                console.log(data)
+
+                axios.post('/api/sites/deploy', data)
+                    .then(response => {
+                        console.log(response);
+
+
+                        console.log("deployed")
+
+
+                    });
 
             }
         }

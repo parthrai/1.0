@@ -53835,7 +53835,7 @@ var staticRenderFns = [
       _c(
         "a",
         { staticClass: "btn btn-primary", attrs: { href: "#/sites/add" } },
-        [_vm._v("Add Site")]
+        [_c("i", { staticClass: "fas fa-spinner fa-spin" }), _vm._v("Add Site")]
       )
     ])
   },
@@ -54300,7 +54300,7 @@ var content = __webpack_require__(68);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("54902564", content, false, {});
+var update = __webpack_require__(4)("c56ba546", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -54509,7 +54509,7 @@ var content = __webpack_require__(74);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("296ac365", content, false, {});
+var update = __webpack_require__(4)("03a1ad90", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -54750,7 +54750,7 @@ var content = __webpack_require__(81);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("0778daec", content, false, {});
+var update = __webpack_require__(4)("636a5768", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -54852,7 +54852,7 @@ var content = __webpack_require__(84);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("4ac02ef2", content, false, {});
+var update = __webpack_require__(4)("4809e8b4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -55071,7 +55071,7 @@ var content = __webpack_require__(88);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("2f191392", content, false, {});
+var update = __webpack_require__(4)("5cf8ef76", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Sites extends Migration
+class SiteContents extends Migration
 {
     /**
      * Run the migrations.
@@ -14,21 +14,17 @@ class Sites extends Migration
     public function up()
     {
         //
-        Schema::create('sites', function (Blueprint $table) {
+        Schema::create('site_contents', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('user_id');
-            $table->string('server_id')->default('');
-            $table->string('site_id')->default('');
-
-
-            $table->string('options')->default('');
+            $table->integer('site_id');
+            $table->integer('modified_by');
+            $table->string('content')->default('');
 
 
 
             $table->timestamps();
         });
-
     }
 
     /**
@@ -39,7 +35,7 @@ class Sites extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('sites');
+        Schema::dropIfExists('site_contents');
 
     }
 }

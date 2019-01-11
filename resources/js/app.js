@@ -15,11 +15,13 @@ import VuejsDialog from 'vuejs-dialog'
 import Notifications from 'vue-notification'
 
 
+
 import routes from './routes'
 
 Vue.use(VueRouter)
 Vue.use(VuejsDialog)
 Vue.use(Notifications)
+
 
 
 const router = new VueRouter({

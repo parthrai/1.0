@@ -318,7 +318,7 @@ class SiteController extends Controller
             'form_params' => [
                 'provider' => 'github',
 
-                'repository' => 'parthrai/1.0',
+                'repository' => 'parthrai/templates',
 
                 'branch' => 'master'
             ]

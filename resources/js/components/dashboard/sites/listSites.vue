@@ -14,7 +14,7 @@
 
                     </div>
                     <div class="col-lg-3">
-                        <a href="#/sites/add" class="btn btn-primary">Add Site</a>
+                        <a href="#/sites/add" class="btn btn-primary"><i class="fas fa-spinner fa-spin"></i>Add Site</a>
 
 
                     </div>

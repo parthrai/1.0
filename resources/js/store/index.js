@@ -62,6 +62,11 @@ export const store = new Vuex.Store({
             return state.Loader_addsite
         },
 
+
+        getSetupComponent(state){
+            return state.component
+        },
+
         getSetupInfo(state){
             return state.setup
         },

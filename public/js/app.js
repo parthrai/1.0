@@ -873,6 +873,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
             return state.Loader_addsite;
         },
+        getSetupComponent: function getSetupComponent(state) {
+            return state.component;
+        },
         getSetupInfo: function getSetupInfo(state) {
             return state.setup;
         }
@@ -53430,6 +53433,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -55420,6 +55429,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -55435,9 +55445,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         component: {
             get: function get() {
 
-                console.log("hello yo yo ");
                 // this.updateCompanyName();
-                return this.$store.getters.getComponent;
+                return this.$store.getters.getSetupComponent;
             }
         }
 

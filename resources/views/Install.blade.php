@@ -13,8 +13,9 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h1>Hello</h1>
+                        
                         <setup-loader-component></setup-loader-component>
+
 
                     </div>
                 </div>

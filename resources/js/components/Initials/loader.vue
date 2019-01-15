@@ -2,6 +2,7 @@ c<template>
 
     <div>
 
+
         <transition name="fade" mode="out-in">
             <keep-alive>
                 <component v-bind:is="component"> </component>
@@ -32,9 +33,9 @@ c<template>
             component:{
                 get(){
 
-                    console.log("hello yo yo ");
+
                    // this.updateCompanyName();
-                    return this.$store.getters.getComponent;
+                    return this.$store.getters.getSetupComponent;
                 }
 
 

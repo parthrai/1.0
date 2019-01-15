@@ -21,6 +21,9 @@
                 </div>
 
             </div>
+
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="form-group">
@@ -80,6 +83,9 @@
 
                         </tbody>
                     </table>
+
+
+
                     <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="material-icons">navigate_before</i> Previous</button>
                     <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="material-icons">navigate_next</i></button>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Site;
+use App\SiteContent;
 use App\User;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
@@ -99,6 +100,10 @@ class SiteController extends Controller
         $site = new Site();
         $site->user_id = Auth::user()->id;
         $site->server_id= $this->server_id;
+        $site->site_name = $site_name;
+
+
+
 
         $site->save();
         $site_id = $site->id;
@@ -127,7 +132,11 @@ class SiteController extends Controller
         $site->save();
 
 
-
+        $siteContent = new SiteContent();
+        $siteContent->site_id = $site->id;
+        $siteContent->modified_by = Auth::user()->id;
+        $siteContent->content = "";
+        $siteContent->save();
 
 
 
@@ -320,7 +329,7 @@ class SiteController extends Controller
 
                 'repository' => 'parthrai/templates',
 
-                'branch' => 'master'
+                'branch' => 'temp2'
             ]
         ]);
 

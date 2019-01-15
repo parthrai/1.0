@@ -20,6 +20,7 @@ class Sites extends Migration
             $table->integer('user_id');
             $table->string('server_id')->default('');
             $table->string('site_id')->default('');
+            $table->string('site_name')->default('');
 
 
             $table->string('options')->default('');

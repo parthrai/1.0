@@ -49,3 +49,5 @@ Route::post('/sites/deploy','SiteController@deploy');
 
 
 Route::get('test','SiteContentController@test');
+Route::get('test2','SiteContentController@add');
+Route::post('test3','SiteContentController@test3');

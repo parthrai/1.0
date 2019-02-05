@@ -74,6 +74,15 @@
             gtag('config', 'UA-128348802-1');
         </script>
 
+        <script type="text/javascript">
+            var leady_track_key="9aP4619ELB6JTI4b";
+            (function(){
+                var l=document.createElement("script");l.type="text/javascript";l.async=true;
+                l.src='https://t.leady.com/'+leady_track_key+"/L.js";
+                var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(l,s);
+            })();
+        </script>
+
     </head>
     <body>
         <div class="flex-center position-ref full-height">

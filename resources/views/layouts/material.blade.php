@@ -416,15 +416,21 @@
                 </nav>
                 <div class="copyright float-right">
                     &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>, made with <i class="material-icons">favorite</i> by
+                   made with <i class="material-icons">favorite</i> by
                     <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
                 </div>
             </div>
         </footer>
     </div>
 </div>
+
+
+
+
+</div>
+
+
+
 
 <!--   Core JS Files   -->
 <script src="material-assets/js/core/jquery.min.js"></script>
@@ -475,8 +481,6 @@
 <script src="material-assets/demo/jquery.sharrre.js"></script>
 
 
-
-</div>
 </body>
 
 </html>

@@ -29,7 +29,7 @@
         gtag('config', 'UA-128348802-1');
     </script>
 
-    <script type="text/javascript">
+    <script>
         var leady_track_key="9aP4619ELB6JTI4b";
         (function(){
             var l=document.createElement("script");l.type="text/javascript";l.async=true;

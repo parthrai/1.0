@@ -37,3 +37,6 @@ Route::post('/addAdminUser','SetupController@addAdminUsers');
 Route::post('addSite','SiteController@addSites');
 Route::post('/sites/add','SiteController@addSites');
 Route::post('/sites/import','SiteController@importSites');
+
+
+Route::get('/site/{site_id}','SiteContentController@get');

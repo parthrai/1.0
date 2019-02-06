@@ -62578,6 +62578,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -62711,6 +62713,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function () {
                 console.log('Clicked on cancel');
             });
+        },
+        siteLink: function siteLink(site_id) {
+
+            return '/site/' + site_id;
         },
 
 
@@ -62935,7 +62941,21 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._m(2, true),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-success",
+                              attrs: {
+                                href: _vm.siteLink(site.site_id),
+                                rel: "tooltip"
+                              }
+                            },
+                            [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("remove_red_eye")
+                              ])
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "button",
@@ -63023,19 +63043,6 @@ var staticRenderFns = [
         [_c("i", { staticClass: "fas fa-spinner fa-spin" }), _vm._v("Add Site")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success",
-        attrs: { type: "button", rel: "tooltip" }
-      },
-      [_c("i", { staticClass: "material-icons" }, [_vm._v("remove_red_eye")])]
-    )
   }
 ]
 render._withStripped = true

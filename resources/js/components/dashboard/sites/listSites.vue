@@ -71,9 +71,11 @@
                                 <button type="button" rel="tooltip" class="btn btn-warning">
                                     <i class="material-icons" @click="enableSSL(site)">security</i>
                                 </button>
-                                <button type="button" rel="tooltip" class="btn btn-success">
+
+                                <a :href=" siteLink(site.site_id)"  rel="tooltip" class="btn btn-success">
                                     <i class="material-icons">remove_red_eye</i>
-                                </button>
+                                </a>
+
 
                                 <button type="button" rel="tooltip" class="btn btn-danger" @click="deleteSite(site)">
                                     <i class="material-icons">close</i>
@@ -245,6 +247,11 @@
                     .catch(function () {
                         console.log('Clicked on cancel')
                     });
+            },
+
+            siteLink(site_id){
+
+                return '/site/'+site_id;
             },
 
 

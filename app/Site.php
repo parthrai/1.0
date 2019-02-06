@@ -8,6 +8,8 @@ class Site extends Model
 {
     //
 
+    protected $primaryKey = 'site_id';
+
     public function user(){
 
         return $this->belongsTo('App\User','user_id');

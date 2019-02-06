@@ -62,9 +62,9 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="material-assets/css/material-dashboard.min.css?v=2.1.0" rel="stylesheet" />
+    <link href="{{ asset('material-assets/css/material-dashboard.min.css?v=2.1.0') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="material-assets/demo/demo.css" rel="stylesheet" />
+    <link href="{{ asset('material-assets/demo/demo.css') }}" rel="stylesheet" />
     <!-- Google Tag Manager -->
 
     <!-- End Google Tag Manager -->
@@ -77,7 +77,7 @@
 
 <!-- End Google Tag Manager (noscript) -->
 <div class="wrapper ">
-    <div class="sidebar" data-color="rose" data-background-color="black" data-image="material-assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="rose" data-background-color="black" data-image="{{asset('material-assets/img/sidebar-1.jpg')}}">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -95,7 +95,7 @@
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">
-                    <img src="material-assets/img/faces/avatar.jpg" />
+                    <img src="{{asset('material-assets/img/faces/avatar.jpg')}}" />
                 </div>
                 <div class="user-info">
                     <a data-toggle="collapse" href="#collapseExample" class="username">
@@ -132,7 +132,7 @@
                 <li class="nav-item active ">
 
 
-                    <a class="nav-link" href="/home#/">
+                    <a class="nav-link" href="{{asset('/home#/')}}">
                         <i class="material-icons">dashboard</i>
                         <p> Dashboard </p>
                     </a>
@@ -147,7 +147,7 @@
                     <div class="collapse" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item ">
-                                <a class="nav-link" href="#/users">
+                                <a class="nav-link" href="{{asset('#/users')}}">
                                     <span class="sidebar-mini"> A </span>
                                     <span class="sidebar-normal"> Add </span>
                                 </a>
@@ -173,13 +173,13 @@
                         <ul class="nav">
 
                             <li class="nav-item ">
-                                <a class="nav-link" href="#/sites">
+                                <a class="nav-link" href="{{asset('/home#/sites')}}">
                                     <span class="sidebar-mini"> M </span>
                                     <span class="sidebar-normal"> Manage sites </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#/sites/add">
+                                <a class="nav-link" href="{{asset('/home#/sites/add')}}">
                                     <span class="sidebar-mini"> A </span>
                                     <span class="sidebar-normal"> Add </span>
                                 </a>
@@ -433,52 +433,52 @@
 
 
 <!--   Core JS Files   -->
-<script src="material-assets/js/core/jquery.min.js"></script>
-<script src="material-assets/js/core/popper.min.js"></script>
+<script src="{{asset('material-assets/js/core/jquery.min.js')}}"></script>
+<script src="{{asset('material-assets/js/core/popper.min.js')}}"></script>
 
-<script src="material-assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!-- Plugin for the momentJs  -->
-<script src="material-assets/js/plugins/moment.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/moment.min.js')}}"></script>
 <!--  Plugin for Sweet Alert -->
-<script src="material-assets/js/plugins/sweetalert2.js"></script>
+<script src="{{asset('material-assets/js/plugins/sweetalert2.js')}}"></script>
 <!-- Forms Validations Plugin -->
-<script src="material-assets/js/plugins/jquery.validate.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/jquery.validate.min.js')}}"></script>
 <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="material-assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+<script src="{{asset('material-assets/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="material-assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-<script src="material-assets/js/plugins/jquery.dataTables.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/jquery.dataTables.min.js')}}"></script>
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="material-assets/js/plugins/bootstrap-tagsinput.js"></script>
+<script src="{{asset('material-assets/js/plugins/bootstrap-tagsinput.js')}}"></script>
 <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="material-assets/js/plugins/jasny-bootstrap.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/jasny-bootstrap.min.js')}}"></script>
 <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-<script src="material-assets/js/plugins/fullcalendar.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/fullcalendar.min.js')}}"></script>
 
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="material-assets/js/plugins/nouislider.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/nouislider.min.js')}}"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 <!-- Library for adding dinamically elements -->
-<script src="material-assets/js/plugins/arrive.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/arrive.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Chartist JS -->
-<script src="material-assets/js/plugins/chartist.min.js"></script>
+<script src="{{asset('material-assets/js/plugins/chartist.min.js')}}"></script>
 <!--  Notifications Plugin    -->
-<script src="material-assets/js/plugins/bootstrap-notify.js"></script>
+<script src="{{asset('material-assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="material-assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
+<script src="{{asset('material-assets/js/material-dashboard.min.js?v=2.1.0')}}" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="material-assets/demo/demo.js"></script>
+<script src="{{asset('material-assets/demo/demo.js')}}"></script>
 
 <!-- Sharrre libray -->
-<script src="material-assets/demo/jquery.sharrre.js"></script>
+<script src="{{asset('material-assets/demo/jquery.sharrre.js')}}"></script>
 
 
 </body>

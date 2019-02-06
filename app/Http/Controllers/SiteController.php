@@ -329,7 +329,7 @@ class SiteController extends Controller
 
                 'repository' => 'parthrai/templates',
 
-                'branch' => 'temp2'
+                'branch' => 'yelp'
             ]
         ]);
 

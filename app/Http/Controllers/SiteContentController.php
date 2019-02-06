@@ -84,4 +84,17 @@ class SiteContentController extends Controller
 
 
     }
+
+
+
+
+    public function get($site_id){
+
+
+        $site = Site::findOrFail($site_id);
+
+
+
+        return view('sites.ManageSite')->with(['site' => $site]);
+    }
 }

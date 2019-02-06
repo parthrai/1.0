@@ -56,7 +56,10 @@ class SiteContentController extends Controller
 
 
       //  SiteContent::create($array['site']);
-        $tt = SiteContent::find(2);
+
+        $siteContent = SiteContent::where('site_id',$site_id)->first();
+
+        $tt = SiteContent::find($siteContent->id);
 
         $tt->content = $json;
 

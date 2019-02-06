@@ -44,7 +44,33 @@ class SiteContentController extends Controller
                       "tagline": "this is some tagline"
                     },
                     "footer": {
-                                    "text": "the is some footer text"
+                                    "content": "
+                                    
+                                        <div class='row'>
+                                            <div class='col-lg-4'>
+                                                <h1>Section 1</h1>
+                                            </div>
+                                            
+                                            <div class='col-lg-4'>
+                                                <h2>Section2</h2>
+                                            </div>
+                                            
+                                            <div class='col-lg-4'>
+                                                <h3>Section 3</h3>
+                                            </div>
+
+
+                                            
+                                        
+                                        </div>                                
+                                        
+                                        
+                                        
+                                    
+                                    
+                                    
+                                    ",
+                                    
                     }
                   }
                }';

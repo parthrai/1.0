@@ -19,7 +19,7 @@ class SiteContents extends Migration
 
             $table->integer('site_id');
             $table->integer('modified_by');
-            $table->string('content')->default('');
+            $table->longText('content')->default('');
 
 
 

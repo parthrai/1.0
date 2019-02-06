@@ -30,7 +30,7 @@ class SiteContentController extends Controller
 
     }
 
-    public function add(){
+    public function add($site_id){
         $json='{
                             "site": {
                                 "title": "this is some title",
@@ -53,10 +53,12 @@ class SiteContentController extends Controller
         var_dump($array['site']);
 
 
-      //  SiteContent::create($array['site']);
-        $tt = SiteContent::find(1);
 
-        $tt->content = $array['site'];
+
+      //  SiteContent::create($array['site']);
+        $tt = SiteContent::find(2);
+
+        $tt->content = $json;
 
         $tt->update();
 

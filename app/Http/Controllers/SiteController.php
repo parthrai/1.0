@@ -97,6 +97,7 @@ class SiteController extends Controller
 
 
 
+
         $site = new Site();
         $site->user_id = Auth::user()->id;
         $site->server_id= $this->server_id;
@@ -345,7 +346,7 @@ if [ -f artisan ]
 then
     php artisan key:generate   
     php artisan migrate --force
-    php artisan db:seed --class=initialTableSeeder
+   
 fi";
 
 

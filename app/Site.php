@@ -8,7 +8,7 @@ class Site extends Model
 {
     //
 
-    protected $primaryKey = 'site_id';
+  //  protected $primaryKey = 'site_id';
 
     public function user(){
 

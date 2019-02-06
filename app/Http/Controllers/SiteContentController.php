@@ -46,30 +46,31 @@ class SiteContentController extends Controller
                     "footer": {
                                     "content": "
                                     
-                                        <div class='row'>
-                                            <div class='col-lg-4'>
-                                                <h1>Section 1</h1>
-                                            </div>
+                                        <div class=row>
+                                            <div class=\"col-lg-4\">
+                                                <h1>Section 1<\/h1>
+                                            <\/div>
                                             
-                                            <div class='col-lg-4'>
-                                                <h2>Section2</h2>
-                                            </div>
+                                            <div class=\"col-lg-4\">
+                                                <h2>Section2<\/h2>
+                                            <\/div>
                                             
-                                            <div class='col-lg-4'>
-                                                <h3>Section 3</h3>
-                                            </div>
+                                            <div class=\"col-lg-4\">
+                                                <h2>Section3<\/h2>
+                                            <\/div>
+                                            
+                                          
 
-
                                             
                                         
-                                        </div>                                
+                                        <\/div>                                
                                         
                                         
                                         
                                     
                                     
                                     
-                                    ",
+                                    \",
                                     
                     }
                   }

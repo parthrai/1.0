@@ -31,6 +31,36 @@ class SiteContentController extends Controller
     }
 
     public function add($site_id){
+
+
+
+        $html = '
+            <div class="row">
+                <div class="col-lg-4">
+                    <h1>Section 1</h1>    
+                </div>
+                
+                 <div class="col-lg-4">
+                    <h1>Section 2</h1>    
+                </div>
+                
+                 <div class="col-lg-4">
+                    <h1>Section 3</h1>    
+                </div>
+            
+            </div>
+        
+        
+        ';
+
+
+        $html = base64_encode($html);
+
+
+
+       // $html = "hello";
+
+
         $json='{
                             "site": {
                                 "title": "this is some title",
@@ -44,37 +74,14 @@ class SiteContentController extends Controller
                       "tagline": "this is some tagline"
                     },
                     "footer": {
-                                    "content": "
-                                    
-                                        <div class=row>
-                                            <div class=\"col-lg-4\">
-                                                <h1>Section 1<\/h1>
-                                            <\/div>
-                                            
-                                            <div class=\"col-lg-4\">
-                                                <h2>Section2<\/h2>
-                                            <\/div>
-                                            
-                                            <div class=\"col-lg-4\">
-                                                <h2>Section3<\/h2>
-                                            <\/div>
-                                            
-                                          
-
-                                            
-                                        
-                                        <\/div>                                
-                                        
-                                        
-                                        
-                                    
-                                    
-                                    
-                                    \",
-                                    
+                                    "content": "'.$html.'"
                     }
                   }
                }';
+
+
+
+
 
         $array = json_decode($json, true);
         var_dump($array['site']);

@@ -177,7 +177,9 @@ class SiteController extends Controller
 
          Site::destroy($site->id);
 
+        $siteContent = SiteContent::where('site_id',$site->id)->first();
 
+        SiteContent::destroy($siteContent->id);
 
 
 

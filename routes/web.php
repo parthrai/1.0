@@ -40,3 +40,10 @@ Route::post('/sites/import','SiteController@importSites');
 
 
 Route::get('/site/{site_id}','SiteContentController@get');
+
+
+
+// Analytics Routes
+
+
+Route::get('/analytics','AnalyticsController@test');

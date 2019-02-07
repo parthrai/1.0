@@ -44,6 +44,12 @@ Route::post('/sites/ssl/enable','SiteController@enableSSL');
 Route::post('/sites/git','SiteController@addRepo');
 Route::post('/sites/deploy','SiteController@deploy');
 
+/***************   ANALYTICS ROUTES  *******************/
+
+
+Route::get('/analytics/pageViews','AnalyticsController@VisitorsAndPageViews');
+
+/***************   END ANALYTICS ROUTES  *******************/
 
 
 

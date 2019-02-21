@@ -16,9 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test', function () {
-    return view('test');
-});
+
 
 
 
@@ -27,6 +25,9 @@ Route::get('/setup','SetupController@index');
 
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -47,3 +48,5 @@ Route::get('/site/{site_id}','SiteContentController@get');
 
 
 Route::get('/analytics','AnalyticsController@test');
+
+Route::get('/test','AnalyticsController@test2');

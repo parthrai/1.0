@@ -1,5 +1,7 @@
 <template>
 
+
+
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
@@ -8,7 +10,7 @@
                         <i class="material-icons">wb_cloudy</i>
                     </div>
                     <p class="card-category">Site</p>
-                    <h3 class="card-title">184</h3>
+                    <h3 class="card-title"><i v-if="!statsLoaded" class="fa fa-spinner fa-spin" style="font-size:24px"></i>{{stats.Sites}}</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
@@ -25,7 +27,7 @@
                         <i class="material-icons">account_box</i>
                     </div>
                     <p class="card-category">Users</p>
-                    <h3 class="card-title">75.521</h3>
+                    <h3 class="card-title"><i v-if="!statsLoaded" class="fa fa-spinner fa-spin" style="font-size:24px"></i>{{stats.Users}}</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
@@ -69,3 +71,45 @@
     </div>
 
 </template>
+
+
+<script>
+
+    export default{
+
+        data(){
+
+            return{
+                stats:[],
+                statsLoaded : false,
+
+            }
+        },
+
+        created(){
+            this.fetchStats();
+        },
+
+
+        methods:{
+
+
+            fetchStats(){
+                axios.get('/api/dashboard').then(response => {
+                    console.log(response.data);
+                    this.stats=response.data
+                    this.statsLoaded= true;
+                });
+
+            },
+
+
+
+
+
+        }
+
+
+    }
+
+</script>

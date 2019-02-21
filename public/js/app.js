@@ -61817,7 +61817,7 @@ var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__components_da
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(107)
 /* template */
 var __vue_template__ = __webpack_require__(58)
 /* template functional */
@@ -61865,123 +61865,159 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
+      _c("div", { staticClass: "card card-stats" }, [
+        _c(
+          "div",
+          { staticClass: "card-header card-header-warning card-header-icon" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-category" }, [_vm._v("Site")]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "card-title" }, [
+              !_vm.statsLoaded
+                ? _c("i", {
+                    staticClass: "fa fa-spinner fa-spin",
+                    staticStyle: { "font-size": "24px" }
+                  })
+                : _vm._e(),
+              _vm._v(_vm._s(_vm.stats.Sites))
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
+      _c("div", { staticClass: "card card-stats" }, [
+        _c(
+          "div",
+          { staticClass: "card-header card-header-rose card-header-icon" },
+          [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-category" }, [_vm._v("Users")]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "card-title" }, [
+              !_vm.statsLoaded
+                ? _c("i", {
+                    staticClass: "fa fa-spinner fa-spin",
+                    staticStyle: { "font-size": "24px" }
+                  })
+                : _vm._e(),
+              _vm._v(_vm._s(_vm.stats.Users))
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(3)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(4),
+    _vm._v(" "),
+    _vm._m(5)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
-        _c("div", { staticClass: "card card-stats" }, [
-          _c(
-            "div",
-            { staticClass: "card-header card-header-warning card-header-icon" },
-            [
-              _c("div", { staticClass: "card-icon" }, [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("wb_cloudy")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-category" }, [_vm._v("Site")]),
-              _vm._v(" "),
-              _c("h3", { staticClass: "card-title" }, [_vm._v("184")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("div", { staticClass: "stats" }, [
-              _c("i", { staticClass: "material-icons text-danger" }, [
-                _vm._v("warning")
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "#pablo" } }, [
-                _vm._v("Get More Space...")
-              ])
-            ])
+    return _c("div", { staticClass: "card-icon" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("wb_cloudy")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "stats" }, [
+        _c("i", { staticClass: "material-icons text-danger" }, [
+          _vm._v("warning")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#pablo" } }, [_vm._v("Get More Space...")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-icon" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("account_box")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "stats" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("local_offer")]),
+        _vm._v(" Tracked from Google Analytics\n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
+      _c("div", { staticClass: "card card-stats" }, [
+        _c(
+          "div",
+          { staticClass: "card-header card-header-success card-header-icon" },
+          [
+            _c("div", { staticClass: "card-icon" }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("store")])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-category" }, [_vm._v("Revenue")]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "card-title" }, [_vm._v("$34,245")])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
+          _c("div", { staticClass: "stats" }, [
+            _c("i", { staticClass: "material-icons" }, [_vm._v("date_range")]),
+            _vm._v(" Last 24 Hours\n                ")
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
-        _c("div", { staticClass: "card card-stats" }, [
-          _c(
-            "div",
-            { staticClass: "card-header card-header-rose card-header-icon" },
-            [
-              _c("div", { staticClass: "card-icon" }, [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("account_box")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-category" }, [_vm._v("Users")]),
-              _vm._v(" "),
-              _c("h3", { staticClass: "card-title" }, [_vm._v("75.521")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("div", { staticClass: "stats" }, [
-              _c("i", { staticClass: "material-icons" }, [
-                _vm._v("local_offer")
-              ]),
-              _vm._v(" Tracked from Google Analytics\n                ")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
-        _c("div", { staticClass: "card card-stats" }, [
-          _c(
-            "div",
-            { staticClass: "card-header card-header-success card-header-icon" },
-            [
-              _c("div", { staticClass: "card-icon" }, [
-                _c("i", { staticClass: "material-icons" }, [_vm._v("store")])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-category" }, [_vm._v("Revenue")]),
-              _vm._v(" "),
-              _c("h3", { staticClass: "card-title" }, [_vm._v("$34,245")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("div", { staticClass: "stats" }, [
-              _c("i", { staticClass: "material-icons" }, [
-                _vm._v("date_range")
-              ]),
-              _vm._v(" Last 24 Hours\n                ")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
-        _c("div", { staticClass: "card card-stats" }, [
-          _c(
-            "div",
-            { staticClass: "card-header card-header-info card-header-icon" },
-            [
-              _c("div", { staticClass: "card-icon" }, [
-                _c("i", { staticClass: "fa fa-twitter" })
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-category" }, [_vm._v("Followers")]),
-              _vm._v(" "),
-              _c("h3", { staticClass: "card-title" }, [_vm._v("+245")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("div", { staticClass: "stats" }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("update")]),
-              _vm._v(" Just Updated\n                ")
-            ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6" }, [
+      _c("div", { staticClass: "card card-stats" }, [
+        _c(
+          "div",
+          { staticClass: "card-header card-header-info card-header-icon" },
+          [
+            _c("div", { staticClass: "card-icon" }, [
+              _c("i", { staticClass: "fa fa-twitter" })
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-category" }, [_vm._v("Followers")]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "card-title" }, [_vm._v("+245")])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
+          _c("div", { staticClass: "stats" }, [
+            _c("i", { staticClass: "material-icons" }, [_vm._v("update")]),
+            _vm._v(" Just Updated\n                ")
           ])
         ])
       ])
@@ -65450,6 +65486,119 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 105 */,
+/* 106 */,
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+
+        return {
+            stats: [],
+            statsLoaded: false
+
+        };
+    },
+    created: function created() {
+        this.fetchStats();
+    },
+
+
+    methods: {
+        fetchStats: function fetchStats() {
+            var _this = this;
+
+            axios.get('/api/dashboard').then(function (response) {
+                console.log(response.data);
+                _this.stats = response.data;
+                _this.statsLoaded = true;
+            });
+        }
+    }
+
+});
 
 /***/ })
 /******/ ]);

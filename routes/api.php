@@ -21,6 +21,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('users','UserController@getUsers');
 Route::post('users/delete','UserController@deleteUsers');
 
+
+
+
+/***************   DAHBOARD ROUTES  *******************/
+
+Route::get('dashboard','DashboardController@getStats');
+
+
+/***************  END DAHBOARD ROUTES  *******************/
+
+
+
+
+
 /***************   SITE CRUD ROUTES  *******************/
 
 

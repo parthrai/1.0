@@ -132,7 +132,7 @@
                 <li class="nav-item active ">
 
 
-                    <a class="nav-link" href="{{asset('/home#/')}}">
+                    <a class="nav-link" href="{{asset('/home')}}">
                         <i class="material-icons">dashboard</i>
                         <p> Dashboard </p>
                     </a>
@@ -188,120 +188,8 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" data-toggle="collapse" href="#formsExamples">
-                        <i class="material-icons">content_paste</i>
-                        <p> Forms
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="formsExamples">
-                        <ul class="nav">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/forms/regular.html">
-                                    <span class="sidebar-mini"> RF </span>
-                                    <span class="sidebar-normal"> Regular Forms </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/forms/extended.html">
-                                    <span class="sidebar-mini"> EF </span>
-                                    <span class="sidebar-normal"> Extended Forms </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/forms/validation.html">
-                                    <span class="sidebar-mini"> VF </span>
-                                    <span class="sidebar-normal"> Validation Forms </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/forms/wizard.html">
-                                    <span class="sidebar-mini"> W </span>
-                                    <span class="sidebar-normal"> Wizard </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" data-toggle="collapse" href="#tablesExamples">
-                        <i class="material-icons">grid_on</i>
-                        <p> Tables
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="tablesExamples">
-                        <ul class="nav">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/tables/regular.html">
-                                    <span class="sidebar-mini"> RT </span>
-                                    <span class="sidebar-normal"> Regular Tables </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/tables/extended.html">
-                                    <span class="sidebar-mini"> ET </span>
-                                    <span class="sidebar-normal"> Extended Tables </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/tables/datatables.net.html">
-                                    <span class="sidebar-mini"> DT </span>
-                                    <span class="sidebar-normal"> DataTables.net </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" data-toggle="collapse" href="#mapsExamples">
-                        <i class="material-icons">place</i>
-                        <p> Maps
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="mapsExamples">
-                        <ul class="nav">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/maps/google.html">
-                                    <span class="sidebar-mini"> GM </span>
-                                    <span class="sidebar-normal"> Google Maps </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/maps/fullscreen.html">
-                                    <span class="sidebar-mini"> FSM </span>
-                                    <span class="sidebar-normal"> Full Screen Map </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="../examples/maps/vector.html">
-                                    <span class="sidebar-mini"> VM </span>
-                                    <span class="sidebar-normal"> Vector Map </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="../examples/widgets.html">
-                        <i class="material-icons">widgets</i>
-                        <p> Widgets </p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="../examples/charts.html">
-                        <i class="material-icons">timeline</i>
-                        <p> Charts </p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="../examples/calendar.html">
-                        <i class="material-icons">date_range</i>
-                        <p> Calendar </p>
-                    </a>
-                </li>
+
+
             </ul>
         </div>
     </div>
@@ -370,7 +258,7 @@
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="#">Settings</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="{{asset('/logout')}}">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -388,39 +276,7 @@
 
 
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="float-left">
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://creative-tim.com/presentation">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright float-right">
-                    &copy;
-                   made with <i class="material-icons">favorite</i> by
-                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-                </div>
-            </div>
-        </footer>
+
     </div>
 </div>
 

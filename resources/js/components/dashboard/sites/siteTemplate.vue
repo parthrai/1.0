@@ -10,31 +10,24 @@
 
 
 
-        <h1>Select site template for {{getSite.site_name}} with id {{getSite.site_id}}</h1>
+        <h1>Select site template for {{getSite.site_name}} </h1>
 
         <button class="btn btn-primary" @click="deploy">Deploy <i v-if="btnLoading" class="fa fa-spinner fa-spin" style="font-size:24px"></i></button>
 
         <div class="row">
             <div class="col-lg-3">
-                <h3>Template1</h3>
-                <button class="btn btn-primary" @click="select" id="1"> select </button>
+                <img src="../../../images/templates/temp1.png" width="100%" > <br>
+                <button class="btn btn-primary" @click="select" id="yelp"> select </button>
             </div>
 
             <div class="col-lg-3">
-                <h3>Template2</h3>
 
-                <button class="btn btn-primary" @click="select" id="2"> select </button>
+                    <img src="../../../images/templates/temp1.png" width="100%" > <br>
+                    <button class="btn btn-primary" @click="select" id="temp1"> select </button>
+
             </div>
 
-            <div class="col-lg-3">
-                <h3>Template3</h3>
-                <button class="btn btn-primary" @click="select" id="3"> select </button>
-            </div>
 
-            <div class="col-lg-3">
-                <h3>Template4</h3>
-                <button class="btn btn-primary" @click="select" id="4"> select </button>
-            </div>
         </div>
     </div>
 </template>
@@ -98,6 +91,7 @@
                 this.isLoading=true
 
                 let data={
+
                     site_id : this.site_id,
                     site_name : this.site_name,
                     template: event.target.id

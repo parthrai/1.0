@@ -14,7 +14,7 @@ class Initial extends Model
         if(!$data->isSetup)
             return "Install";
         else
-            return "home";
+            return "auth.login";
 
     }
 

@@ -21,7 +21,8 @@ class SetupController extends Controller
     public function index(){
 
 
-            $view = Initial::isSetup();
+        $view = Initial::isSetup();
+
 
 
         return view($view);
@@ -36,6 +37,7 @@ class SetupController extends Controller
         $data =Initial::find(1);
         $data->company_name =  $companyName;
         $data->license_key = $licenseKey;
+        $data->isSetup=true;
         $data->save();
 
         return "success";
@@ -56,4 +58,7 @@ class SetupController extends Controller
         $user->save();
 
     }
+
+
+
 }

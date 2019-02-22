@@ -305,16 +305,17 @@ class SiteController extends Controller
     }
 
 
-    /*******************************  END SITE SSL FUNCTION ********************************/
+    /*******************************  END SITE SSL FUNCTIONS ********************************/
 
 
-
+    /******************************* INSTALLING & DEPLOYING TEMPLATE FUNCTIONS ********************************/
 
     public function addRepo(Request $request){
 
 
         $site_id = $request->site_id;
         $site_name = $request->site_name;
+        $template = $request->template;
 
 
 
@@ -332,7 +333,7 @@ class SiteController extends Controller
 
                 'repository' => 'parthrai/templates',
 
-                'branch' => 'yelp'
+                'branch' => $template
             ]
         ]);
 
@@ -410,5 +411,8 @@ fi";
 
 
     }
+
+
+    /******************************* INSTALLING & DEPLOYING TEMPLATE FUNCTIONS ********************************/
 
 }

@@ -10,35 +10,94 @@
                 </div>
             </transition>
 
-            <form>
-                <div class="form-group">
-                    <label for="u_name">Name</label>
-                    <input type="text" class="form-control" id="u_name" placeholder="Admin user's name" v-model="data.name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="email address" v-model="data.email">
-                </div>
+            <form class="login100-form validate-form">
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" class="form-control" id="password" placeholder="password" v-model="data.password">
+                <div class="wrap-input100 validate-input">
 
-                    <label class="btn btn-primary" @click="randomPassword()">Generate Password</label>
+                    <input class="input100" type="text" id="u_name" placeholder="Admin user's name" v-model="data.name">
+                    <span class="focus-input100"></span>
+
+                    <span class="symbol-input100">
+							<i class="fa fa-smile-o" aria-hidden="true"></i>
+                    </span>
                 </div>
 
-                <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm_password" placeholder="confirm password " v-model="data.confirmPassword">
+                <div class="wrap-input100 validate-input">
+
+                    <input class="input100" type="text" id="email" placeholder="email address" v-model="data.email">
+                    <span class="focus-input100"></span>
+
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input">
+
+                    <input class="input100" type="text" id="password" placeholder="password" v-model="data.password">
+                    <span class="focus-input100"></span>
+
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
 
 
                 </div>
+
+
+
+                <div class="wrap-input100 validate-input">
+
+                    <input class="input100" type="password" id="confirm_password" placeholder="confirm password " v-model="data.confirmPassword">
+                    <span class="focus-input100"></span>
+
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+
+
+
+
+
 
 
             </form>
 
-            <button class="btn btn-primary" v-on:click="back()">Back</button>
-            <button  class="btn btn-primary" @click="add()">Add</button>
+
+            <div class="container-login100-form-btn">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button class="login100-form-btn" v-on:click="back()">
+                            Back
+                        </button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button class="login100-form-btn" v-on:click="add()">
+                            Add
+                        </button>
+                    </div>
+
+                    <!---
+
+                    <div class="col-lg-4">
+                        <button class="login100-form-btn" v-on:click="randomPassword()">
+                            Gen. Password
+                        </button>
+
+                    </div>
+
+                    -->
+                </div>
+
+
+
+            </div>
+
+
         </div>
         <div v-else>
 

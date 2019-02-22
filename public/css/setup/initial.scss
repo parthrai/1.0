@@ -1,0 +1,27 @@
+.logo-letters-group {
+  height: 10vh;
+  letter-spacing: 3px;
+  font-size: 1.5vw;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 20vh;
+  margin-left: -50vw;
+  width: 100vw;
+  .logo-letter {
+    animation-iteration-count: 1, 1;
+    animation-name            : fromBlackToGreen, disappear;
+    animation-duration        : 0.3s, 0.3s;
+    animation-direction       : normal, normal;
+    animation-fill-mode: forwards, forwards;
+    img {
+      height: 3vh;
+    }
+  }
+  @for $n from (27)*-1 through -1 {
+    span:nth-child(#{abs($n)}) {
+      animation-delay: $n * 0.1s + 3s, abs($n) * 0.1s + 3s
+    }
+  }
+}

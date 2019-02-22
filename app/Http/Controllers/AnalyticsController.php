@@ -31,7 +31,7 @@ class AnalyticsController extends Controller
 
     public function VisitorsAndPageViews(){
 
-        $analytics = $this->helper->getView(184198906);
+
 
 
         $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
@@ -43,8 +43,27 @@ class AnalyticsController extends Controller
     public function topReferrers(){
 
         $topReferrers =  Analytics::fetchTopReferrers(Period::days(7));
+        $array_topReferrs = json_decode(json_encode($topReferrers), true);
 
-        return $topReferrers;
+        return $array_topReferrs;
+
+    }
+
+    public function topBrowsers(){
+
+        $topBrowsers = Analytics::fetchTopBrowsers(Period::days(7));
+        $array_topBrowsers = json_decode(json_encode($topBrowsers), true);
+
+        return $array_topBrowsers;
+
+    }
+
+    public function UserTypes(){
+
+        $UserTypes = Analytics::fetchUserTypes(Period::days(7));
+        $array_UserTypes = json_decode(json_encode($UserTypes), true);
+
+        return $array_UserTypes;
 
     }
 

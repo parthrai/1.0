@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 
 
+
 Route::get('/setup','SetupController@index');
 
 

@@ -13,7 +13,10 @@ import {store} from './store/index'
 import VueRouter from 'vue-router'
 import VuejsDialog from 'vuejs-dialog'
 import Notifications from 'vue-notification'
+import VueGoogleCharts from 'vue-google-charts'
+
 import Builder from 'vuse'
+
 
 
 
@@ -22,6 +25,8 @@ import routes from './routes'
 Vue.use(VueRouter)
 Vue.use(VuejsDialog)
 Vue.use(Notifications)
+Vue.use(VueGoogleCharts)
+
 Vue.use(Builder)
 
 
@@ -50,8 +55,12 @@ Vue.component('setup-loader-component', require('./components/Initials/loader.vu
 Vue.component('setup-component', require('./components/Initials/setup/setup.vue'));
 Vue.component('addUsers-component', require('./components/Initials/users/addUsers.vue'));
 
+
 Vue.component('builder-component', require('./components/builder/builder.vue'));
 Vue.component('new-component', require('./components/builder/new.vue'));
+
+
+
 
 
 

@@ -72,7 +72,7 @@
                                     <i class="material-icons" @click="enableSSL(site)">security</i>
                                 </button>
 
-                                <a :href=" siteLink(site.site_id)"  rel="tooltip" class="btn btn-success">
+                                <a @click="siteAnalytics()"  rel="tooltip" class="btn btn-success">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
 
@@ -254,6 +254,10 @@
                 return '/site/'+site_id;
             },
 
+            siteAnalytics(){
+                this.$router.push('/site/analytics')
+            },
+
 
             /*********************** END SITES FUNCTIONS ******************************/
 
@@ -270,7 +274,6 @@
                 })
 
             },
-
 
             sslCheck(){
                 for(let site in this.sslStatus){
@@ -292,7 +295,6 @@
 
                 }
             },
-
 
             enableSSL(site){
                 console.log("hello")

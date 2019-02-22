@@ -1,26 +1,50 @@
 <template>
     <div>
 
+            <span class="login100-form-title">
+						CMS Setup
+            </span>
+
         <transition name="bounce">
             <div class="alert alert-danger" v-if="!this.isValidated">
                 <strong>Error!</strong> Please enter valid information!
             </div>
         </transition>
 
-        <form>
-            <div class="form-group">
-                <label for="c_name">Company name</label>
-                <input type="text" class="form-control" id="c_name" placeholder="Company Name" v-model="companyName">
+        <form class="login100-form validate-form">
+
+
+            <div class="wrap-input100 validate-input">
+
+                <input class="input100" type="text" id="c_name" placeholder="Company's name" v-model="companyName">
+                <span class="focus-input100"></span>
+
+                <span class="symbol-input100">
+							<i class="fa fa-institution" aria-hidden="true"></i>
+                </span>
             </div>
-            <div class="form-group">
-                <label for="l_key">License Key:</label>
-                <input type="text" class="form-control" id="l_key" placeholder="License Key" v-model="licenseKey">
+
+            <div class="wrap-input100 validate-input">
+
+                <input class="input100" type="text" id="l_key" placeholder="License Key" v-model="licenseKey">
+                <span class="focus-input100"></span>
+
+                <span class="symbol-input100">
+							<i class="fa fa-shield" aria-hidden="true"></i>
+                </span>
             </div>
+
+
 
 
         </form>
 
-        <button  class="btn btn-primary" v-on:click="next()">Next</button>
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn" v-on:click="next()">
+                Next
+            </button>
+        </div>
+
     </div>
 </template>
 

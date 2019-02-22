@@ -62,6 +62,9 @@ Route::post('/sites/deploy','SiteController@deploy');
 
 
 Route::get('/analytics/pageViews','AnalyticsController@VisitorsAndPageViews');
+Route::get('/analytics/referrers','AnalyticsController@topReferrers');
+Route::get('/analytics/browsers','AnalyticsController@topBrowsers');
+Route::get('/analytics/userTypes','AnalyticsController@UserTypes');
 
 /***************   END ANALYTICS ROUTES  *******************/
 

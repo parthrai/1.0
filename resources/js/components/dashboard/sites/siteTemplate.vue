@@ -22,8 +22,8 @@
 
             <div class="col-lg-3">
 
-                    <img src="../../../images/templates/temp1.png" width="100%" > <br>
-                    <button class="btn btn-primary" @click="select" id="temp1"> select </button>
+                    <img src="../../../images/templates/temp2.png" width="100%" > <br>
+                    <button class="btn btn-primary" @click="select" id="temp2"> select </button>
 
             </div>
 

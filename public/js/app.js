@@ -64514,7 +64514,7 @@ var render = function() {
         _c("div", { staticClass: "col-lg-3" }, [
           _c("img", {
             attrs: {
-              src: __webpack_require__(114),
+              src: __webpack_require__(115),
               width: "100%"
             }
           }),
@@ -64525,7 +64525,7 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary",
-              attrs: { id: "temp1" },
+              attrs: { id: "temp2" },
               on: { click: _vm.select }
             },
             [_vm._v(" select ")]
@@ -66157,6 +66157,12 @@ if (false) {
 /***/ (function(module, exports) {
 
 module.exports = "/images/temp1.png?03e5d89dbe585d1c86b03c43a478e3bd";
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/temp2.png?bfb6780363df4c44e3019dddd9a8914c";
 
 /***/ })
 /******/ ]);

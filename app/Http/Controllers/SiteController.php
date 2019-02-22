@@ -342,15 +342,15 @@ class SiteController extends Controller
 
         $d_script= "cd /home/forge/".$site_name."
 
-composer install --no-interaction --prefer-dist --optimize-autoloader
-echo \"\" | sudo -S service php7.2-fpm reload
-
-if [ -f artisan ]
-then
-    php artisan key:generate   
-    php artisan migrate --force
-   
-fi";
+            composer install --no-interaction --prefer-dist --optimize-autoloader
+            echo \"\" | sudo -S service php7.2-fpm reload
+            
+            if [ -f artisan ]
+            then
+                php artisan key:generate   
+                php artisan migrate --force
+               
+            fi";
 
 
         $result = $client->put('https://forge.laravel.com/api/v1/servers/219450/sites/'.$site_id.'/deployment/script', [
